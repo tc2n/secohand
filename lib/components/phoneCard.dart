@@ -57,7 +57,7 @@ class PhoneCard extends StatelessWidget {
                 children: [
                   Text(phoneBrand, style: brandName,),
                   Text(phoneModel, style: brandModel,),
-                  SizedBox(height: 30,),
+                  Expanded(child: SizedBox()),
                   Text('$monthsOld months old', style: brandAge,),
                   Text('₹$price', style: brandName,),
                 ],
