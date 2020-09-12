@@ -16,19 +16,22 @@ class _MyFilterChipState extends State<MyFilterChip> {
   bool _selected=false;
   @override
   Widget build(BuildContext context) {
-    return FilterChip(
-      label: Text(widget.label),
-      labelStyle: chipText.copyWith(color: _selected ? background : primary),
-      selected: _selected,
-      onSelected: (bool selected){
-        setState(() {
-          _selected=!_selected;
-          print(_selected);
-        });
-      },
-      backgroundColor: primaryTransparent,
-      selectedColor: primary,
-      checkmarkColor: background,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: FilterChip(
+        label: Text(widget.label),
+        labelStyle: chipText.copyWith(color: _selected ? background : primary),
+        selected: _selected,
+        onSelected: (bool selected){
+          setState(() {
+            _selected=!_selected;
+            print(_selected);
+          });
+        },
+        backgroundColor: primaryTransparent,
+        selectedColor: primary,
+        checkmarkColor: background,
+      ),
     );
   }
 }
