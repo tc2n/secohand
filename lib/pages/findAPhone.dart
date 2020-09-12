@@ -133,7 +133,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                             ),
                             MyFilterChip(
                               onSelected: null,
-                              label: '₹Oppo',
+                              label: 'Oppo',
                             ),
                             MyFilterChip(
                               onSelected: null,
@@ -141,7 +141,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                             ),
                             MyFilterChip(
                               onSelected: null,
-                              label: 'Huwaie',
+                              label: 'Huawei',
                             ),
                           ],
                         ),
@@ -197,9 +197,9 @@ class _FindAPhoneState extends State<FindAPhone> {
                     elevation: 5.0,
                     fillColor: iconWhatsapp,
                     child: SvgPicture.asset('images/whatsapp.svg',
-                    height: 25,
-                    width: 25,
-                    color: background,
+                        height: 25,
+                        width: 25,
+                        color: background,
                         semanticsLabel: 'Acme Logo'),
                     padding: EdgeInsets.all(15.0),
                     shape: CircleBorder(),
