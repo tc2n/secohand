@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:secohand/constant.dart';
 import 'package:secohand/components/filterChip.dart';
 
-class FindYourPhone extends StatefulWidget {
+class FindAPhone extends StatefulWidget {
   @override
-  _FindYourPhoneState createState() => _FindYourPhoneState();
+  _FindAPhoneState createState() => _FindAPhoneState();
 }
 
-class _FindYourPhoneState extends State<FindYourPhone> {
+class _FindAPhoneState extends State<FindAPhone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +15,7 @@ class _FindYourPhoneState extends State<FindYourPhone> {
       appBar: AppBar(
         title: Center(
             child: Text(
-          'FIND YOUR PHONE',
+          'FIND A PHONE',
           style: appbar,
         )),
         backgroundColor: Colors.transparent,
