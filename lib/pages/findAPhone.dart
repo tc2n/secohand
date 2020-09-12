@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:secohand/components/phoneCard.dart';
 import 'package:secohand/constant.dart';
 import 'package:secohand/components/filterChip.dart';
 
@@ -22,7 +23,7 @@ class _FindAPhoneState extends State<FindAPhone> {
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             Column(
@@ -148,6 +149,27 @@ class _FindAPhoneState extends State<FindAPhone> {
                 )
               ],
             ), //For Chips
+            SizedBox(height: 20),
+            Expanded(
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+              children: [
+                PhoneCard(
+                  url: 'images/pixel.jpg',
+                  phoneBrand: 'Pixel',
+                  phoneModel: '4A',
+                  monthsOld: 18,
+                  price: 30000,
+                ),
+                PhoneCard(
+                  url: 'images/samsung.jpg',
+                  phoneBrand: 'Samsung',
+                  phoneModel: 'Galaxy M30',
+                  monthsOld: 3,
+                  price: 5000,
+                ),
+              ],
+            )),
           ],
         ),
       ),
