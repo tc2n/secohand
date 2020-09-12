@@ -9,8 +9,9 @@ class PhoneCard extends StatelessWidget {
   final String phoneModel;
   final int price;
   final int monthsOld;
+  final Function onClick;
 
-  PhoneCard({this.url, this.phoneBrand, this.phoneModel, this.price, this.monthsOld});
+  PhoneCard({this.url, this.phoneBrand, this.phoneModel, this.price, this.monthsOld, this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,7 @@ class PhoneCard extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(child: Icon(FeatherIcons.arrowRight, color: primary, size: 35,)),
+            Expanded(child: IconButton(icon: Icon(FeatherIcons.arrowRight, color: primary, size: 35,), onPressed: onClick)),
           ],
         ),
       ),

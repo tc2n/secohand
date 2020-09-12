@@ -4,6 +4,7 @@ import 'package:secohand/components/phoneCard.dart';
 import 'package:secohand/constant.dart';
 import 'package:secohand/components/filterChip.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:secohand/pages/product.dart';
 
 class FindAPhone extends StatefulWidget {
   @override
@@ -11,8 +12,10 @@ class FindAPhone extends StatefulWidget {
 }
 
 class _FindAPhoneState extends State<FindAPhone> {
+
   @override
   Widget build(BuildContext context) {
+    Function onClick = (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductPage()));};
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
@@ -133,7 +136,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                             ),
                             MyFilterChip(
                               onSelected: null,
-                              label: '₹Oppo',
+                              label: 'Oppo',
                             ),
                             MyFilterChip(
                               onSelected: null,
@@ -162,6 +165,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                     phoneModel: '4A',
                     monthsOld: 18,
                     price: 30000,
+                    onClick: onClick,
                   ),
                   PhoneCard(
                     url: 'images/samsung.jpg',
@@ -169,6 +173,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                     phoneModel: 'Galaxy M30',
                     monthsOld: 3,
                     price: 5000,
+                    onClick: onClick,
                   ),
                 ],
               ),
@@ -226,3 +231,4 @@ class _FindAPhoneState extends State<FindAPhone> {
     );
   }
 }
+

@@ -19,3 +19,7 @@ TextStyle chipText = GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.nor
 TextStyle brandName = GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.bold);
 TextStyle brandModel = GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.normal);
 TextStyle brandAge = GoogleFonts.nunito(color: Colors.black54, fontWeight: FontWeight.w600, fontSize: 13);
+TextStyle productPrice = GoogleFonts.nunito(color:primary, fontSize: 36, fontWeight: FontWeight.bold );
+TextStyle smallHead = GoogleFonts.nunito(color: primaryTransparent, fontSize: 16, fontWeight: FontWeight.w600);
+TextStyle tableHead = GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w600);
+TextStyle tableContent = GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black54 );
