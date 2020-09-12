@@ -23,3 +23,5 @@ TextStyle productPrice = GoogleFonts.nunito(color:primary, fontSize: 36, fontWei
 TextStyle smallHead = GoogleFonts.nunito(color: primaryTransparent, fontSize: 16, fontWeight: FontWeight.w600);
 TextStyle tableHead = GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w600);
 TextStyle tableContent = GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black54 );
+TextStyle typedText = GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.w400);
+TextStyle buttonText = GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.w400, color: background, letterSpacing: 2.0 );

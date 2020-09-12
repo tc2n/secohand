@@ -5,6 +5,7 @@ import 'package:secohand/constant.dart';
 import 'package:secohand/components/filterChip.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:secohand/pages/product.dart';
+import 'package:secohand/pages/sellYourPhone.dart';
 
 class FindAPhone extends StatefulWidget {
   @override
@@ -12,10 +13,12 @@ class FindAPhone extends StatefulWidget {
 }
 
 class _FindAPhoneState extends State<FindAPhone> {
-
   @override
   Widget build(BuildContext context) {
-    Function onClick = (){Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductPage()));};
+    Function onClick = () {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ProductPage()));
+    };
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
@@ -209,18 +212,27 @@ class _FindAPhoneState extends State<FindAPhone> {
                     padding: EdgeInsets.all(15.0),
                     shape: CircleBorder(),
                   ),
-                  RawMaterialButton(
-                    onPressed: () {},
-                    constraints: BoxConstraints(),
-                    elevation: 5.0,
-                    fillColor: iconAdd,
-                    child: Icon(
-                      FeatherIcons.plus,
-                      size: 25,
-                      color: background,
+                  Hero(
+                    tag: 'button',
+                    child: RawMaterialButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SellYourPhone()),
+                        );
+                      },
+                      constraints: BoxConstraints(),
+                      elevation: 5.0,
+                      fillColor: iconAdd,
+                      child: Icon(
+                        FeatherIcons.plus,
+                        size: 25,
+                        color: background,
+                      ),
+                      padding: EdgeInsets.all(15.0),
+                      shape: CircleBorder(),
                     ),
-                    padding: EdgeInsets.all(15.0),
-                    shape: CircleBorder(),
                   ),
                 ],
               ),
@@ -231,4 +243,3 @@ class _FindAPhoneState extends State<FindAPhone> {
     );
   }
 }
-
