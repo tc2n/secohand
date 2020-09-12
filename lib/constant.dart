@@ -7,6 +7,10 @@ Color background= Color(0xffeeeeee);
 Color primary = Color(0xff732de3);
 Color primaryTransparent = Color(0x33732de3);
 
+Color iconCall = Color(0xff176BEF);
+Color iconWhatsapp = Color(0xff179C52);
+Color iconAdd = Color(0xffFF3E30);
+
 
 //TextStyles
 TextStyle appbar = GoogleFonts.roboto(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500);

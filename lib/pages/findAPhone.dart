@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:secohand/components/phoneCard.dart';
 import 'package:secohand/constant.dart';
 import 'package:secohand/components/filterChip.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FindAPhone extends StatefulWidget {
   @override
@@ -151,25 +153,73 @@ class _FindAPhoneState extends State<FindAPhone> {
             ), //For Chips
             SizedBox(height: 20),
             Expanded(
-                child: ListView(
-                  physics: BouncingScrollPhysics(),
-              children: [
-                PhoneCard(
-                  url: 'images/pixel.jpg',
-                  phoneBrand: 'Pixel',
-                  phoneModel: '4A',
-                  monthsOld: 18,
-                  price: 30000,
-                ),
-                PhoneCard(
-                  url: 'images/samsung.jpg',
-                  phoneBrand: 'Samsung',
-                  phoneModel: 'Galaxy M30',
-                  monthsOld: 3,
-                  price: 5000,
-                ),
-              ],
-            )),
+              child: ListView(
+                physics: BouncingScrollPhysics(),
+                children: [
+                  PhoneCard(
+                    url: 'images/pixel.jpg',
+                    phoneBrand: 'Pixel',
+                    phoneModel: '4A',
+                    monthsOld: 18,
+                    price: 30000,
+                  ),
+                  PhoneCard(
+                    url: 'images/samsung.jpg',
+                    phoneBrand: 'Samsung',
+                    phoneModel: 'Galaxy M30',
+                    monthsOld: 3,
+                    price: 5000,
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              height: 90,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  RawMaterialButton(
+                    onPressed: () {},
+                    constraints: BoxConstraints(),
+                    elevation: 5.0,
+                    fillColor: iconCall,
+                    child: Icon(
+                      FeatherIcons.phone,
+                      size: 25,
+                      color: background,
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                    shape: CircleBorder(),
+                  ),
+                  RawMaterialButton(
+                    onPressed: () {},
+                    constraints: BoxConstraints(),
+                    elevation: 5.0,
+                    fillColor: iconWhatsapp,
+                    child: SvgPicture.asset('images/whatsapp.svg',
+                    height: 25,
+                    width: 25,
+                    color: background,
+                        semanticsLabel: 'Acme Logo'),
+                    padding: EdgeInsets.all(15.0),
+                    shape: CircleBorder(),
+                  ),
+                  RawMaterialButton(
+                    onPressed: () {},
+                    constraints: BoxConstraints(),
+                    elevation: 5.0,
+                    fillColor: iconAdd,
+                    child: Icon(
+                      FeatherIcons.plus,
+                      size: 25,
+                      color: background,
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                    shape: CircleBorder(),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
