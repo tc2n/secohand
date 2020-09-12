@@ -36,39 +36,114 @@ class _FindYourPhoneState extends State<FindYourPhone> {
                     SizedBox(
                       width: 10,
                     ),
-                    MyFilterChip(
-                      onSelected: null,
-                      label: 'Under ₹1000',
+                    Expanded(
+                      child: Container(
+                        height: 36,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            MyFilterChip(
+                              onSelected: null,
+                              label: 'Under ₹1000',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: '₹1000-₹2000',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: '₹2000-₹5000',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: '₹5000-₹10,000',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: 'Over ₹10000',
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    MyFilterChip(
-                      onSelected: null,
-                      label: '₹1000-₹2000',
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Old',
+                      style: chipHeading,
                     ),
-                    MyFilterChip(
-                      onSelected: null,
-                      label: '₹2000-₹5000',
+                    SizedBox(
+                      width: 10,
                     ),
-                    MyFilterChip(
-                      onSelected: null,
-                      label: '₹5000-₹10,000',
+                    Expanded(
+                      child: Container(
+                        height: 36,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            MyFilterChip(
+                              onSelected: null,
+                              label: '< 6 months',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: '< 1 year',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: '< 2 years',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: '< 5 years',
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    MyFilterChip(
-                      onSelected: null,
-                      label: 'Over ₹10000',
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Brands',
+                      style: chipHeading,
                     ),
-                    //I am not able to make this thing scroll
-                    /*
-                    ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                          MyFilterChip(onSelected: null, label: 'Under ₹1000',),
-                          MyFilterChip(onSelected: null, label: '₹1000-₹2000',),
-                          MyFilterChip(onSelected: null, label: '₹2000-₹5000',),
-                          MyFilterChip(onSelected: null, label: '₹5000-₹10,000',),
-                          MyFilterChip(onSelected: null, label: 'Over ₹10000',),
-                      ],
-                    ),*/
-                    //This thing is not working
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 36,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            MyFilterChip(
+                              onSelected: null,
+                              label: 'Samsung',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: 'Vivo',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: '₹Oppo',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: 'Redmi',
+                            ),
+                            MyFilterChip(
+                              onSelected: null,
+                              label: 'Huwaie',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 )
               ],
