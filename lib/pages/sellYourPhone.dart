@@ -26,16 +26,18 @@ class _SellYourPhoneState extends State<SellYourPhone> {
   File _image;
   final picker = ImagePicker();
 
-Future getImageFromCamera() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera, imageQuality: 50);
+  Future getImageFromCamera() async {
+    final pickedFile =
+        await picker.getImage(source: ImageSource.camera, imageQuality: 50);
 
     setState(() {
       _image = File(pickedFile.path);
     });
   }
 
-Future getImageFromGallery() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+  Future getImageFromGallery() async {
+    final pickedFile =
+        await picker.getImage(source: ImageSource.gallery, imageQuality: 50);
 
     setState(() {
       _image = File(pickedFile.path);
@@ -43,38 +45,38 @@ Future getImageFromGallery() async {
   }
 
   void _showPicker(context) {
-  showModalBottomSheet(
-      context: context,
-      builder: (BuildContext bc) {
-        return SafeArea(
-          child: Container(
-            child: new Wrap(
-              children: <Widget>[
-                new ListTile(
-                    leading: new Icon(Icons.photo_library),
-                    title: new Text('Photo Library'),
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Photo Library'),
+                      onTap: () {
+                        getImageFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
                     onTap: () {
-                      getImageFromGallery();
+                      getImageFromCamera();
                       Navigator.of(context).pop();
-                    }),
-                new ListTile(
-                  leading: new Icon(Icons.photo_camera),
-                  title: new Text('Camera'),
-                  onTap: () {
-                    getImageFromCamera();
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
-      }
-    );
-}
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
@@ -268,31 +270,54 @@ Future getImageFromGallery() async {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: _image==null ? Image.asset('images/placeholder.png'): Image.file(_image),
+                      child: Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          color: Colors.black26,
+                          image: DecorationImage(
+                              image: _image == null
+                                  ? AssetImage('images/placeholder.png')
+                                  : FileImage(_image),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
                     ),
-                    IconButton(icon: Icon(FeatherIcons.upload, size: 25,), onPressed: (){_showPicker(context);})
+                    IconButton(
+                        icon: Icon(
+                          FeatherIcons.upload,
+                          size: 25,
+                        ),
+                        onPressed: () {
+                          _showPicker(context);
+                        })
                   ],
                 ),
-                Hero(
-                  tag: 'button',
-                  child: RawMaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SellYourPhone()),
-                      );
-                    },
-                    constraints: BoxConstraints(),
-                    elevation: 5.0,
-                    fillColor: iconAdd,
-                    child: Text(
-                      'SUBMIT',
-                      style: buttonText,
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Hero(
+                    tag: 'button',
+                    child: RawMaterialButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SellYourPhone()),
+                        );
+                      },
+                      constraints: BoxConstraints(),
+                      elevation: 5.0,
+                      fillColor: iconAdd,
+                      child: Text(
+                        'SUBMIT',
+                        style: buttonText,
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
                     ),
                   ),
                 ),
