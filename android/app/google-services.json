@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "343956069727",
+    "firebase_url": "https://secohand-11d1d.firebaseio.com",
+    "project_id": "secohand-11d1d",
+    "storage_bucket": "secohand-11d1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343956069727:android:95e80091b294a2f02e6aea",
+        "android_client_info": {
+          "package_name": "com.example.secohand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343956069727-qaha2430i8mnmmtr8kd4tro4lmq0csar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD81g1mmU0lrYZsewunIH4MFdgCklxysDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343956069727-qaha2430i8mnmmtr8kd4tro4lmq0csar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

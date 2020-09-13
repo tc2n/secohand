@@ -4,6 +4,7 @@ import 'package:secohand/components/phoneCard.dart';
 import 'package:secohand/constant.dart';
 import 'package:secohand/components/filterChip.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:secohand/firebase_repository/firebase_repository.dart';
 import 'package:secohand/pages/product.dart';
 import 'package:secohand/pages/sellYourPhone.dart';
 
