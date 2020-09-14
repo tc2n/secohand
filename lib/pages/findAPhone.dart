@@ -51,7 +51,9 @@ class _FindAPhoneState extends State<FindAPhone> {
                           scrollDirection: Axis.horizontal,
                           children: [
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                print('Value of chip================$value');
+                              },
                               label: 'Under ₹1000',
                             ),
                             MyFilterChip(
@@ -162,12 +164,24 @@ class _FindAPhoneState extends State<FindAPhone> {
                   stream: _phonesRepository.approvedPhones(),
                   builder: (BuildContext context,
                       AsyncSnapshot<List<PhoneInfo>> snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          'Some Error Occured',
+                          style: smallHead,
+                        ),
+                      );
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
                     return ListView.builder(
                         itemCount: snapshot.data.length,
                         itemBuilder: (context, index) {
                           final phone = snapshot.data[index];
                           return PhoneCard(
                             url: 'images/pixel.jpg',
+                            id: phone.id.substring(16),
                             phoneBrand: phone.company,
                             phoneModel: phone.model,
                             monthsOld: phone.old,
@@ -182,28 +196,6 @@ class _FindAPhoneState extends State<FindAPhone> {
                           );
                         });
                   }),
-
-              // child: ListView(
-              //   physics: BouncingScrollPhysics(),
-              //   children: [
-              //     PhoneCard(
-              //       url: 'images/pixel.jpg',
-              //       phoneBrand: 'Pixel',
-              //       phoneModel: '4A',
-              //       monthsOld: 18,
-              //       price: 30000,
-              //       onClick: onClick,
-              //     ),
-              //     PhoneCard(
-              //       url: 'images/samsung.jpg',
-              //       phoneBrand: 'Samsung',
-              //       phoneModel: 'Galaxy M30',
-              //       monthsOld: 3,
-              //       price: 5000,
-              //       onClick: onClick,
-              //     ),
-              //   ],
-              // ),
             ),
             Container(
               height: 90,

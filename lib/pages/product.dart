@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:secohand/firebase_repository/firebase_repository.dart';
 
 class ProductPage extends StatelessWidget {
-
   final PhoneInfo _phone;
 
   ProductPage(this._phone);
@@ -54,66 +53,71 @@ class ProductPage extends StatelessWidget {
                 '₹ ${_phone.price}',
                 style: productPrice,
               ),
-              Text(
-                'Details',
-                style: smallHead,
-              ),
-              Table(
-                border: TableBorder(
-                    top: BorderSide(color: primaryTransparent, width: 1),
-                    bottom: BorderSide(color: primaryTransparent, width: 1),
-                    right: BorderSide(color: primaryTransparent, width: 1),
-                    left: BorderSide(color: primaryTransparent, width: 1),
-                    verticalInside:
-                        BorderSide(color: primaryTransparent, width: 1)),
+
+              Column(
                 children: [
-                  createTableRow('Old', '${_phone.old} months old'),
-                  createTableRow('RAM', '${_phone.ram} GB'),
-                  createTableRow('Storage', '${_phone.memory} GB'),
-                  createTableRow('Battery', '${_phone.battery} mAh'),
-                  createTableRow('Charger Included?', _phone.charger ? 'Yes' : 'No'),
-                  createTableRow('Screen condition', _phone.screen),
+                  Text(
+                    'Details',
+                    style: smallHead,
+                  ),
+                  SizedBox(height: 10,),
+                  Table(
+                    border: TableBorder(
+                        top: BorderSide(color: primaryTransparent, width: 1),
+                        bottom: BorderSide(color: primaryTransparent, width: 1),
+                        right: BorderSide(color: primaryTransparent, width: 1),
+                        left: BorderSide(color: primaryTransparent, width: 1),
+                        verticalInside:
+                            BorderSide(color: primaryTransparent, width: 1)),
+                    children: [
+                      createTableRow('Old', '${_phone.old} months old'),
+                      createTableRow('RAM', '${_phone.ram} GB'),
+                      createTableRow('Storage', '${_phone.memory} GB'),
+                      createTableRow('Battery', '${_phone.battery} mAh'),
+                      createTableRow(
+                          'Charger Included?', _phone.charger ? 'Yes' : 'No'),
+                      createTableRow('Screen condition', _phone.screen),
+                    ],
+                  ),
                 ],
               ),
-              Text(
-                'Contact Seller',
-                style: smallHead,
-              ),
+              // Text(
+              //   'Contact Seller',
+              //   style: smallHead,
+              // ),
               Container(
-                
-              height: 90,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  RawMaterialButton(
-                    onPressed: () {},
-                    constraints: BoxConstraints(),
-                    elevation: 5.0,
-                    fillColor: iconCall,
-                    child: Icon(
-                      FeatherIcons.phone,
-                      size: 25,
-                      color: background,
+                height: 90,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    RawMaterialButton(
+                      onPressed: () {},
+                      constraints: BoxConstraints(),
+                      elevation: 5.0,
+                      fillColor: iconCall,
+                      child: Icon(
+                        FeatherIcons.phone,
+                        size: 25,
+                        color: background,
+                      ),
+                      padding: EdgeInsets.all(15.0),
+                      shape: CircleBorder(),
                     ),
-                    padding: EdgeInsets.all(15.0),
-                    shape: CircleBorder(),
-                  ),
-                  RawMaterialButton(
-                    onPressed: () {},
-                    constraints: BoxConstraints(),
-                    elevation: 5.0,
-                    fillColor: iconWhatsapp,
-                    child: SvgPicture.asset('images/whatsapp.svg',
-                    height: 25,
-                    width: 25,
-                    color: background,
-                        semanticsLabel: 'Whatsapp Logo'),
-                    padding: EdgeInsets.all(15.0),
-                    shape: CircleBorder(),
-                  ),
-                ],
-              ),
-            
+                    RawMaterialButton(
+                      onPressed: () {},
+                      constraints: BoxConstraints(),
+                      elevation: 5.0,
+                      fillColor: iconWhatsapp,
+                      child: SvgPicture.asset('images/whatsapp.svg',
+                          height: 25,
+                          width: 25,
+                          color: background,
+                          semanticsLabel: 'Whatsapp Logo'),
+                      padding: EdgeInsets.all(15.0),
+                      shape: CircleBorder(),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

@@ -5,13 +5,14 @@ import 'package:secohand/constant.dart';
 class PhoneCard extends StatelessWidget {
 
   final String url;
+  final String id;
   final String phoneBrand;
   final String phoneModel;
   final int price;
   final int monthsOld;
   final Function onClick;
 
-  PhoneCard({this.url, this.phoneBrand, this.phoneModel, this.price, this.monthsOld, this.onClick});
+  PhoneCard({this.url, this.id, this.phoneBrand, this.phoneModel, this.price, this.monthsOld, this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +59,7 @@ class PhoneCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text('ID: $id', style: mobileId,),
                     Text(phoneBrand.toUpperCase(), style: brandName,),
                     Text(phoneModel.toUpperCase(), style: brandModel,),
                     Expanded(child: SizedBox()),
