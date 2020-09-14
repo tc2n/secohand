@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:secohand/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:secohand/firebase_repository/firebase_repository.dart';
 
 class ProductPage extends StatelessWidget {
+
+  final PhoneInfo _phone;
+
+  ProductPage(this._phone);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +20,7 @@ class ProductPage extends StatelessWidget {
         ),
         title: Center(
             child: Text(
-          'SAMSUNG GALAXY M30',
+          '${_phone.company} ${_phone.model}',
           style: appbar,
         )),
         backgroundColor: Colors.transparent,
@@ -45,7 +51,7 @@ class ProductPage extends StatelessWidget {
                 ),
               ),
               Text(
-                '₹ 5000',
+                '₹ ${_phone.price}',
                 style: productPrice,
               ),
               Text(
@@ -61,12 +67,12 @@ class ProductPage extends StatelessWidget {
                     verticalInside:
                         BorderSide(color: primaryTransparent, width: 1)),
                 children: [
-                  createTableRow('Old', '9 months ols'),
-                  createTableRow('RAM', '3 GB'),
-                  createTableRow('Storage', '32 GB'),
-                  createTableRow('Battery', '5000 mAh'),
-                  createTableRow('Charger Included?', 'Yes'),
-                  createTableRow('Screen condition', 'good'),
+                  createTableRow('Old', '${_phone.old} months old'),
+                  createTableRow('RAM', '${_phone.ram} GB'),
+                  createTableRow('Storage', '${_phone.memory} GB'),
+                  createTableRow('Battery', '${_phone.battery} mAh'),
+                  createTableRow('Charger Included?', _phone.charger ? 'Yes' : 'No'),
+                  createTableRow('Screen condition', _phone.screen),
                 ],
               ),
               Text(

@@ -14,12 +14,10 @@ class FindAPhone extends StatefulWidget {
 }
 
 class _FindAPhoneState extends State<FindAPhone> {
+  final PhonesRepository _phonesRepository = FirebasePhoneRepository();
+
   @override
   Widget build(BuildContext context) {
-    Function onClick = () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ProductPage()));
-    };
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
@@ -160,27 +158,52 @@ class _FindAPhoneState extends State<FindAPhone> {
             ), //For Chips
             SizedBox(height: 20),
             Expanded(
-              child: ListView(
-                physics: BouncingScrollPhysics(),
-                children: [
-                  PhoneCard(
-                    url: 'images/pixel.jpg',
-                    phoneBrand: 'Pixel',
-                    phoneModel: '4A',
-                    monthsOld: 18,
-                    price: 30000,
-                    onClick: onClick,
-                  ),
-                  PhoneCard(
-                    url: 'images/samsung.jpg',
-                    phoneBrand: 'Samsung',
-                    phoneModel: 'Galaxy M30',
-                    monthsOld: 3,
-                    price: 5000,
-                    onClick: onClick,
-                  ),
-                ],
-              ),
+              child: StreamBuilder<List<PhoneInfo>>(
+                  stream: _phonesRepository.approvedPhones(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<PhoneInfo>> snapshot) {
+                    return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          final phone = snapshot.data[index];
+                          return PhoneCard(
+                            url: 'images/pixel.jpg',
+                            phoneBrand: phone.company,
+                            phoneModel: phone.model,
+                            monthsOld: phone.old,
+                            price: phone.price,
+                            onClick: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProductPage(phone)));
+                            },
+                          );
+                        });
+                  }),
+
+              // child: ListView(
+              //   physics: BouncingScrollPhysics(),
+              //   children: [
+              //     PhoneCard(
+              //       url: 'images/pixel.jpg',
+              //       phoneBrand: 'Pixel',
+              //       phoneModel: '4A',
+              //       monthsOld: 18,
+              //       price: 30000,
+              //       onClick: onClick,
+              //     ),
+              //     PhoneCard(
+              //       url: 'images/samsung.jpg',
+              //       phoneBrand: 'Samsung',
+              //       phoneModel: 'Galaxy M30',
+              //       monthsOld: 3,
+              //       price: 5000,
+              //       onClick: onClick,
+              //     ),
+              //   ],
+              // ),
             ),
             Container(
               height: 90,
@@ -209,7 +232,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                         height: 25,
                         width: 25,
                         color: background,
-                        semanticsLabel: 'Acme Logo'),
+                        semanticsLabel: 'WhatsApp Logo'),
                     padding: EdgeInsets.all(15.0),
                     shape: CircleBorder(),
                   ),

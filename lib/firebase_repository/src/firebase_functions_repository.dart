@@ -13,7 +13,7 @@ class FirebasePhoneRepository implements PhonesRepository {
   }
 
   @override
-  Stream<List<PhoneInfo>> approvedPhones(String id) {
+  Stream<List<PhoneInfo>> approvedPhones() {
     return phonesCollection.snapshots().map((snapshot) {
       return snapshot.docs
           .where((element) => element.data()['approved'] == true)
