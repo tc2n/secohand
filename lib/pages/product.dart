@@ -20,7 +20,7 @@ class ProductPage extends StatelessWidget {
         ),
         title: Center(
             child: Text(
-          '${_phone.company} ${_phone.model}',
+          '${_phone.company} ${_phone.model}'.toUpperCase(),
           style: appbar,
         )),
         backgroundColor: Colors.transparent,
