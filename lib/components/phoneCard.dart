@@ -49,7 +49,7 @@ class PhoneCard extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.black26,
                     image: DecorationImage(
-                        image: AssetImage(url), fit: BoxFit.cover),
+                        image: url==null ? AssetImage('images/placeholder.png') : NetworkImage(url), fit: BoxFit.cover),
                   ),
                 ),
               ),

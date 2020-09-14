@@ -45,7 +45,7 @@ class ProductPage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Colors.black26,
                   image: DecorationImage(
-                      image: AssetImage('images/samsung.jpg'),
+                      image: _phone.image==null ? AssetImage('images/placeholder.png') : NetworkImage(_phone.image),
                       fit: BoxFit.cover),
                 ),
               ),

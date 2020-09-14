@@ -312,7 +312,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                             itemBuilder: (context, index) {
                               final phone = snapshot.data[index];
                               return PhoneCard(
-                                url: 'images/pixel.jpg',
+                                url: phone.image,
                                 id: phone.id.substring(16),
                                 phoneBrand: phone.company,
                                 phoneModel: phone.model,

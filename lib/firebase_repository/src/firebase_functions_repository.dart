@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:secohand/firebase_repository/firebase_repository.dart';
 import 'entities/entities.dart';
 
@@ -45,4 +46,15 @@ class FirebasePhoneRepository implements PhonesRepository {
           .toList();
     });
   }
+
+  @override
+  Future<String> uploadImage(path, data)  async {
+    StorageReference ref = FirebaseStorage().ref().child(path);
+    StorageUploadTask uploadTask = ref.putFile(data);
+
+    var dowurl = await (await uploadTask.onComplete).ref.getDownloadURL();
+    String url = dowurl.toString();
+
+    return url;
+}
 }

@@ -6,6 +6,7 @@ import 'package:secohand/constant.dart';
 import 'package:secohand/components/textbox.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:secohand/firebase_repository/firebase_repository.dart';
+import 'package:path/path.dart' as p;
 
 class SellYourPhone extends StatefulWidget {
   @override
@@ -24,6 +25,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
   final TextEditingController _batteryController = TextEditingController();
   bool _isChargerAvailable;
   String _screenConditon = 'not mentioned';
+  String _imageUrl;
   File _image;
   final picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
@@ -324,6 +326,24 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             try {
+                              try {
+                                Scaffold.of(context)
+                                ..hideCurrentSnackBar()
+                                ..showSnackBar(SnackBar(
+                                  backgroundColor: Colors.blue,
+                                  content: Text('Uploading image...'),
+                                ));
+                                _imageUrl = await _phonesRepository.uploadImage(p.basename(_image.path), _image);
+                                
+                              } catch (e) {
+                                print(e);
+                                Scaffold.of(context)
+                                ..hideCurrentSnackBar()
+                                ..showSnackBar(SnackBar(
+                                  backgroundColor: Colors.red,
+                                  content: Text('Error Uploading image'),
+                                ));
+                              }
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
                                 ..showSnackBar(SnackBar(
@@ -340,7 +360,9 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                   memory: int.parse(_memoryController.text),
                                   battery: int.parse(_batteryController.text),
                                   charger: _isChargerAvailable,
-                                  screen: _screenConditon));
+                                  screen: _screenConditon,
+                                  image: _imageUrl,
+                                  ));
                             } catch (e) {
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()

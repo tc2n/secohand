@@ -15,7 +15,7 @@ class PhoneEntity {
   final int battery;
   final bool charger;
   final String screen;
-  // final File image;
+  final String image;
   final bool approved;
   final int price;
 
@@ -32,7 +32,7 @@ class PhoneEntity {
       this.battery,
       this.charger,
       this.screen,
-      // this.image,
+      this.image,
       this.approved,
       this.price
       );
@@ -51,6 +51,7 @@ class PhoneEntity {
       "battery": battery,
       "charger": charger,
       "screen" : screen,
+      "image": image,
       "approved" : approved,
       "price" : price
     };
@@ -75,6 +76,7 @@ class PhoneEntity {
       json["battery"] as int,
       json["charger"] as bool,
       json["screen"] as String,
+      json["image"] as String,
       json["approved"] as bool,
       json["price"] as int,
     );
@@ -94,6 +96,7 @@ class PhoneEntity {
       snap.data()['battery'],
       snap.data()['charger'],
       snap.data()['screen'],
+      snap.data()['image'],
       snap.data()['approved'],
       snap.data()['price']
     );
@@ -112,6 +115,7 @@ class PhoneEntity {
       "battery": battery,
       "charger": charger,
       "screen" : screen,
+      "image" : image,
       "approved" : approved,
       "price" : price
     };

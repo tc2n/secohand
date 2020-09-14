@@ -15,7 +15,7 @@ class PhoneInfo {
   final int battery;
   final bool charger;
   final String screen;
-  // final File image;
+  final String image;
   final bool approved;
   final int price;
 
@@ -32,7 +32,7 @@ class PhoneInfo {
       this.battery,
       this.charger,
       this.screen,
-      // this.image,
+      this.image,
       this.approved=false,
       this.price}) : this.id = id;
 
@@ -49,7 +49,7 @@ class PhoneInfo {
   int battery,
   bool charger,
   String screen,
-  // File image,
+  String image,
   bool approved,
   int price,}) {
     return PhoneInfo(
@@ -76,7 +76,7 @@ class PhoneInfo {
   }
 
   PhoneEntity toEntity() {
-    return PhoneEntity(id, name, number, village, company, model, old, ram , memory , battery, charger, screen, approved, price);
+    return PhoneEntity(id, name, number, village, company, model, old, ram , memory , battery, charger, screen,image, approved, price);
   }
 
   static PhoneInfo fromEntity(PhoneEntity entity) {
@@ -93,6 +93,7 @@ class PhoneInfo {
         battery: entity.battery,
         charger: entity.charger,
         screen: entity.screen,
+        image: entity.image,
         approved: entity.approved,
         price: entity.price,
         );

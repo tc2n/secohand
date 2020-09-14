@@ -11,4 +11,6 @@ abstract class PhonesRepository {
   Stream<List<PhoneInfo>> approvedPhones(List<String> companyName, List<int> priceRange, int oldFilter);
 
   // Future<void> updatePhone(PhoneInfo data);
+
+  Future<String> uploadImage(path, data);
 }
