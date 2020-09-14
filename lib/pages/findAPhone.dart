@@ -16,6 +16,9 @@ class FindAPhone extends StatefulWidget {
 class _FindAPhoneState extends State<FindAPhone> {
   final PhonesRepository _phonesRepository = FirebasePhoneRepository();
 
+  List<String> phoneFilter = [];
+  List<int> priceFilter = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,23 +134,53 @@ class _FindAPhoneState extends State<FindAPhone> {
                           scrollDirection: Axis.horizontal,
                           children: [
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if(value){
+                                  phoneFilter.add('samsung');
+                                } else {
+                                  phoneFilter.remove('samsung');
+                                }
+                              },
                               label: 'Samsung',
                             ),
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if(value){
+                                  phoneFilter.add('vivo');
+                                } else {
+                                  phoneFilter.remove('vivo');
+                                }
+                              },
                               label: 'Vivo',
                             ),
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if(value){
+                                  phoneFilter.add('oppo');
+                                } else {
+                                  phoneFilter.remove('oppo');
+                                }
+                              },
                               label: 'Oppo',
                             ),
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if(value){
+                                  phoneFilter.add('redmi');
+                                } else {
+                                  phoneFilter.remove('redmi');
+                                }
+                              },
                               label: 'Redmi',
                             ),
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if(value){
+                                  phoneFilter.add('huawei');
+                                } else {
+                                  phoneFilter.remove('huawei');
+                                }
+                              },
                               label: 'Huawei',
                             ),
                           ],

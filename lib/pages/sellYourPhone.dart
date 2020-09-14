@@ -333,7 +333,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                   name: _nameController.text,
                                   number: _numberController.text,
                                   village: _villageController.text,
-                                  company: _brandController.text,
+                                  company: _brandController.text.toLowerCase(),
                                   model: _modelController.text,
                                   old: int.parse(_ageController.text),
                                   ram: int.parse(_ramController.text),
