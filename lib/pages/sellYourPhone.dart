@@ -22,7 +22,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
   final TextEditingController _ramController = TextEditingController();
   final TextEditingController _memoryController = TextEditingController();
   final TextEditingController _batteryController = TextEditingController();
-  bool _chargerValue;
+  bool _isChargerAvailable;
   String _screenConditon = 'not mentioned';
   File _image;
   final picker = ImagePicker();
@@ -30,7 +30,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
 
   final PhonesRepository _phonesRepository = FirebasePhoneRepository();
 
-  clearAll(){
+  clearAll() {
     _nameController.clear();
     _numberController.clear();
     _villageController.clear();
@@ -40,8 +40,8 @@ class _SellYourPhoneState extends State<SellYourPhone> {
     _ramController.clear();
     _memoryController.clear();
     _batteryController.clear();
-    _chargerValue=null;
-    _screenConditon='not mentioned';
+    _isChargerAvailable = null;
+    _screenConditon = 'not mentioned';
     _image = null;
   }
 
@@ -164,7 +164,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                     },
                   ),
                   TextBox(
-                    text: 'months old',
+                    text: 'Months old',
                     controller: _ageController,
                     keyboardType: TextInputType.number,
                     validator: (_) {
@@ -212,10 +212,10 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                           ),
                           leading: Radio(
                               value: true,
-                              groupValue: _chargerValue,
+                              groupValue: _isChargerAvailable,
                               onChanged: (value) {
                                 setState(() {
-                                  _chargerValue = value;
+                                  _isChargerAvailable = value;
                                 });
                               }),
                         ),
@@ -229,10 +229,10 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                           ),
                           leading: Radio(
                               value: false,
-                              groupValue: _chargerValue,
+                              groupValue: _isChargerAvailable,
                               onChanged: (value) {
                                 setState(() {
-                                  _chargerValue = value;
+                                  _isChargerAvailable = value;
                                 });
                               }),
                         ),
@@ -254,7 +254,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                             style: typedText,
                           ),
                           leading: Radio(
-                              value: 'good',
+                              value: 'Good',
                               groupValue: _screenConditon,
                               onChanged: (value) {
                                 setState(() {
@@ -271,7 +271,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                             style: typedText,
                           ),
                           leading: Radio(
-                              value: 'broken',
+                              value: 'Broken',
                               groupValue: _screenConditon,
                               onChanged: (value) {
                                 setState(() {
@@ -339,9 +339,8 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                   ram: int.parse(_ramController.text),
                                   memory: int.parse(_memoryController.text),
                                   battery: int.parse(_batteryController.text),
-                                  charger: _chargerValue,
+                                  charger: _isChargerAvailable,
                                   screen: _screenConditon));
-                                  
                             } catch (e) {
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
@@ -351,22 +350,21 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                 ));
                             }
                             clearAll();
-                          Scaffold.of(context)
-                            ..hideCurrentSnackBar()
-                            ..showSnackBar(SnackBar(
-                              content: Text('Success'),
-                              backgroundColor: Colors.green,
-                            ));
+                            Scaffold.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(SnackBar(
+                                content: Text('Success'),
+                                backgroundColor: Colors.green,
+                              ));
                           }
-                          
                         },
                         constraints: BoxConstraints(),
                         elevation: 5.0,
                         fillColor: iconAdd,
                         child: Text(
-                                'SUBMIT',
-                                style: buttonText,
-                              ),
+                          'SUBMIT',
+                          style: buttonText,
+                        ),
                         padding:
                             EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                         shape: RoundedRectangleBorder(
