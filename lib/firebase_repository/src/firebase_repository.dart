@@ -8,7 +8,7 @@ abstract class PhonesRepository {
 
   // Future<void> deletePhone(PhoneInfo data);
 
-  Stream<List<PhoneInfo>> approvedPhones();
+  Stream<List<PhoneInfo>> approvedPhones(List<String> companyName, List<int> priceRange, int oldFilter);
 
   // Future<void> updatePhone(PhoneInfo data);
 }

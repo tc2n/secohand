@@ -18,9 +18,20 @@ class _FindAPhoneState extends State<FindAPhone> {
 
   List<String> phoneFilter = [];
   List<int> priceFilter = [];
+  List<bool> selection = [false, false, false, false];
+  int oldFilter;
 
   @override
   Widget build(BuildContext context) {
+    Stream<List<PhoneInfo>> phoneStream =
+        _phonesRepository.approvedPhones(phoneFilter, priceFilter, oldFilter);
+    callStream() {
+      setState(() {
+        phoneStream = _phonesRepository.approvedPhones(
+            phoneFilter, priceFilter, oldFilter);
+      });
+    }
+
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
@@ -55,24 +66,57 @@ class _FindAPhoneState extends State<FindAPhone> {
                           children: [
                             MyFilterChip(
                               onSelected: (value) {
-                                print('Value of chip================$value');
+                                if (value) {
+                                  priceFilter.add(0);
+                                } else {
+                                  priceFilter.remove(0);
+                                }
+                                callStream();
                               },
                               label: 'Under ₹1000',
                             ),
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if (value) {
+                                  priceFilter.add(12);
+                                } else {
+                                  priceFilter.remove(12);
+                                }
+                                callStream();
+                              },
                               label: '₹1000-₹2000',
                             ),
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if (value) {
+                                  priceFilter.add(25);
+                                } else {
+                                  priceFilter.remove(25);
+                                }
+                                callStream();
+                              },
                               label: '₹2000-₹5000',
                             ),
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if (value) {
+                                  priceFilter.add(510);
+                                } else {
+                                  priceFilter.remove(510);
+                                }
+                                callStream();
+                              },
                               label: '₹5000-₹10,000',
                             ),
                             MyFilterChip(
-                              onSelected: null,
+                              onSelected: (value) {
+                                if (value) {
+                                  priceFilter.add(10);
+                                } else {
+                                  priceFilter.remove(10);
+                                }
+                                callStream();
+                              },
                               label: 'Over ₹10000',
                             ),
                           ],
@@ -96,20 +140,64 @@ class _FindAPhoneState extends State<FindAPhone> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            MyFilterChip(
-                              onSelected: null,
+                            MyFilterChipSingle(
+                              isSelected: selection[0],
+                              onSelected: (value) {
+                                setState(() {
+                                  selection = [value, false, false, false];
+                                });
+                                if (value) {
+                                  oldFilter = 6;
+                                } else {
+                                  oldFilter = null;
+                                }
+                                callStream();
+                              },
                               label: '< 6 months',
                             ),
-                            MyFilterChip(
-                              onSelected: null,
+                            MyFilterChipSingle(
+                              isSelected: selection[1],
+                              onSelected: (value) {
+                                setState(() {
+                                  selection = [false, value, false, false];
+                                });
+                                if (value) {
+                                  oldFilter = 12;
+                                } else {
+                                  oldFilter = null;
+                                }
+                                callStream();
+                              },
                               label: '< 1 year',
                             ),
-                            MyFilterChip(
-                              onSelected: null,
+                            MyFilterChipSingle(
+                              isSelected: selection[2],
+                              onSelected: (value) {
+                                setState(() {
+                                  selection = [false, false, value, false];
+                                });
+                                if (value) {
+                                  oldFilter = 24;
+                                } else {
+                                  oldFilter = null;
+                                }
+                                callStream();
+                              },
                               label: '< 2 years',
                             ),
-                            MyFilterChip(
-                              onSelected: null,
+                            MyFilterChipSingle(
+                              isSelected: selection[3],
+                              onSelected: (value) {
+                                setState(() {
+                                  selection = [false, false, false, value];
+                                });
+                                if (value) {
+                                  oldFilter = 60;
+                                } else {
+                                  oldFilter = null;
+                                }
+                                callStream();
+                              },
                               label: '< 5 years',
                             ),
                           ],
@@ -135,51 +223,56 @@ class _FindAPhoneState extends State<FindAPhone> {
                           children: [
                             MyFilterChip(
                               onSelected: (value) {
-                                if(value){
+                                if (value) {
                                   phoneFilter.add('samsung');
                                 } else {
                                   phoneFilter.remove('samsung');
                                 }
+                                callStream();
                               },
                               label: 'Samsung',
                             ),
                             MyFilterChip(
                               onSelected: (value) {
-                                if(value){
+                                if (value) {
                                   phoneFilter.add('vivo');
                                 } else {
                                   phoneFilter.remove('vivo');
                                 }
+                                callStream();
                               },
                               label: 'Vivo',
                             ),
                             MyFilterChip(
                               onSelected: (value) {
-                                if(value){
+                                if (value) {
                                   phoneFilter.add('oppo');
                                 } else {
                                   phoneFilter.remove('oppo');
                                 }
+                                callStream();
                               },
                               label: 'Oppo',
                             ),
                             MyFilterChip(
                               onSelected: (value) {
-                                if(value){
+                                if (value) {
                                   phoneFilter.add('redmi');
                                 } else {
                                   phoneFilter.remove('redmi');
                                 }
+                                callStream();
                               },
                               label: 'Redmi',
                             ),
                             MyFilterChip(
                               onSelected: (value) {
-                                if(value){
+                                if (value) {
                                   phoneFilter.add('huawei');
                                 } else {
                                   phoneFilter.remove('huawei');
                                 }
+                                callStream();
                               },
                               label: 'Huawei',
                             ),
@@ -194,7 +287,7 @@ class _FindAPhoneState extends State<FindAPhone> {
             SizedBox(height: 20),
             Expanded(
               child: StreamBuilder<List<PhoneInfo>>(
-                  stream: _phonesRepository.approvedPhones(),
+                  stream: phoneStream,
                   builder: (BuildContext context,
                       AsyncSnapshot<List<PhoneInfo>> snapshot) {
                     if (snapshot.hasError) {
@@ -231,7 +324,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                   }),
             ),
             Container(
-              height: 90,
+              height: 75,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

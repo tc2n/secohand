@@ -13,6 +13,9 @@ class MyFilterChip extends StatefulWidget {
 }
 
 class _MyFilterChipState extends State<MyFilterChip> {
+
+  Function get _onSelected => widget.onSelected;
+
   bool _selected=false;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,47 @@ class _MyFilterChipState extends State<MyFilterChip> {
         onSelected: (bool selected){
           setState(() {
             _selected=!_selected;
+            _onSelected(selected);
             print(_selected);
+          });
+        },
+        backgroundColor: primaryTransparent,
+        selectedColor: primary,
+        checkmarkColor: background,
+      ),
+    );
+  }
+}
+
+class MyFilterChipSingle extends StatefulWidget {
+  final bool isSelected;
+  final Function onSelected;
+  final String label;
+
+  MyFilterChipSingle({this.isSelected = false, this.onSelected, this.label});
+
+  @override
+  _MyFilterChipSingleState createState() => _MyFilterChipSingleState();
+}
+
+class _MyFilterChipSingleState extends State<MyFilterChipSingle> {
+
+  Function get _onSelected => widget.onSelected;
+  bool get _selectedChip => widget.isSelected;
+
+  // bool _selected=false;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: FilterChip(
+        label: Text(widget.label),
+        labelStyle: chipText.copyWith(color: _selectedChip ? background : primary),
+        selected: _selectedChip,
+        onSelected: (bool selected){
+          setState(() {
+            _onSelected(selected);
+            print(_selectedChip);
           });
         },
         backgroundColor: primaryTransparent,
