@@ -45,343 +45,350 @@ class _FindAPhoneState extends State<FindAPhone> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Column(
+        child: Stack(
           children: [
             Column(
               children: [
-                Row(
+                Column(
                   children: [
-                    Text(
-                      'Price',
-                      style: chipHeading,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 36,
-                        child: ListView(
-                      physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  priceFilter.add(0);
-                                } else {
-                                  priceFilter.remove(0);
-                                }
-                                callStream();
-                              },
-                              label: 'Under ₹1000',
-                            ),
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  priceFilter.add(12);
-                                } else {
-                                  priceFilter.remove(12);
-                                }
-                                callStream();
-                              },
-                              label: '₹1000-₹2000',
-                            ),
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  priceFilter.add(25);
-                                } else {
-                                  priceFilter.remove(25);
-                                }
-                                callStream();
-                              },
-                              label: '₹2000-₹5000',
-                            ),
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  priceFilter.add(510);
-                                } else {
-                                  priceFilter.remove(510);
-                                }
-                                callStream();
-                              },
-                              label: '₹5000-₹10,000',
-                            ),
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  priceFilter.add(10);
-                                } else {
-                                  priceFilter.remove(10);
-                                }
-                                callStream();
-                              },
-                              label: 'Over ₹10000',
-                            ),
-                          ],
+                    Row(
+                      children: [
+                        Text(
+                          'Price',
+                          style: chipHeading,
                         ),
-                      ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 36,
+                            child: ListView(
+                          physics: BouncingScrollPhysics(),
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      priceFilter.add(0);
+                                    } else {
+                                      priceFilter.remove(0);
+                                    }
+                                    callStream();
+                                  },
+                                  label: 'Under ₹1000',
+                                ),
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      priceFilter.add(12);
+                                    } else {
+                                      priceFilter.remove(12);
+                                    }
+                                    callStream();
+                                  },
+                                  label: '₹1000-₹2000',
+                                ),
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      priceFilter.add(25);
+                                    } else {
+                                      priceFilter.remove(25);
+                                    }
+                                    callStream();
+                                  },
+                                  label: '₹2000-₹5000',
+                                ),
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      priceFilter.add(510);
+                                    } else {
+                                      priceFilter.remove(510);
+                                    }
+                                    callStream();
+                                  },
+                                  label: '₹5000-₹10,000',
+                                ),
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      priceFilter.add(10);
+                                    } else {
+                                      priceFilter.remove(10);
+                                    }
+                                    callStream();
+                                  },
+                                  label: 'Over ₹10000',
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                    Row(
+                      children: [
+                        Text(
+                          'Old',
+                          style: chipHeading,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 36,
+                            child: ListView(
+                          physics: BouncingScrollPhysics(),
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                MyFilterChipSingle(
+                                  isSelected: selection[0],
+                                  onSelected: (value) {
+                                    setState(() {
+                                      selection = [value, false, false, false];
+                                    });
+                                    if (value) {
+                                      oldFilter = 6;
+                                    } else {
+                                      oldFilter = null;
+                                    }
+                                    callStream();
+                                  },
+                                  label: '< 6 months',
+                                ),
+                                MyFilterChipSingle(
+                                  isSelected: selection[1],
+                                  onSelected: (value) {
+                                    setState(() {
+                                      selection = [false, value, false, false];
+                                    });
+                                    if (value) {
+                                      oldFilter = 12;
+                                    } else {
+                                      oldFilter = null;
+                                    }
+                                    callStream();
+                                  },
+                                  label: '< 1 year',
+                                ),
+                                MyFilterChipSingle(
+                                  isSelected: selection[2],
+                                  onSelected: (value) {
+                                    setState(() {
+                                      selection = [false, false, value, false];
+                                    });
+                                    if (value) {
+                                      oldFilter = 24;
+                                    } else {
+                                      oldFilter = null;
+                                    }
+                                    callStream();
+                                  },
+                                  label: '< 2 years',
+                                ),
+                                MyFilterChipSingle(
+                                  isSelected: selection[3],
+                                  onSelected: (value) {
+                                    setState(() {
+                                      selection = [false, false, false, value];
+                                    });
+                                    if (value) {
+                                      oldFilter = 60;
+                                    } else {
+                                      oldFilter = null;
+                                    }
+                                    callStream();
+                                  },
+                                  label: '< 5 years',
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Brands',
+                          style: chipHeading,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 36,
+                            child: ListView(
+                          physics: BouncingScrollPhysics(),
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      phoneFilter.add('samsung');
+                                    } else {
+                                      phoneFilter.remove('samsung');
+                                    }
+                                    callStream();
+                                  },
+                                  label: 'Samsung',
+                                ),
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      phoneFilter.add('vivo');
+                                    } else {
+                                      phoneFilter.remove('vivo');
+                                    }
+                                    callStream();
+                                  },
+                                  label: 'Vivo',
+                                ),
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      phoneFilter.add('oppo');
+                                    } else {
+                                      phoneFilter.remove('oppo');
+                                    }
+                                    callStream();
+                                  },
+                                  label: 'Oppo',
+                                ),
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      phoneFilter.add('redmi');
+                                    } else {
+                                      phoneFilter.remove('redmi');
+                                    }
+                                    callStream();
+                                  },
+                                  label: 'Redmi',
+                                ),
+                                MyFilterChip(
+                                  onSelected: (value) {
+                                    if (value) {
+                                      phoneFilter.add('huawei');
+                                    } else {
+                                      phoneFilter.remove('huawei');
+                                    }
+                                    callStream();
+                                  },
+                                  label: 'Huawei',
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Old',
-                      style: chipHeading,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 36,
-                        child: ListView(
-                      physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            MyFilterChipSingle(
-                              isSelected: selection[0],
-                              onSelected: (value) {
-                                setState(() {
-                                  selection = [value, false, false, false];
-                                });
-                                if (value) {
-                                  oldFilter = 6;
-                                } else {
-                                  oldFilter = null;
-                                }
-                                callStream();
-                              },
-                              label: '< 6 months',
+                ), //For Chips
+                SizedBox(height: 20),
+                Expanded(
+                  child: StreamBuilder<List<PhoneInfo>>(
+                      stream: phoneStream,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<PhoneInfo>> snapshot) {
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text(
+                              'Some Error Occured',
+                              style: smallHead,
                             ),
-                            MyFilterChipSingle(
-                              isSelected: selection[1],
-                              onSelected: (value) {
-                                setState(() {
-                                  selection = [false, value, false, false];
-                                });
-                                if (value) {
-                                  oldFilter = 12;
-                                } else {
-                                  oldFilter = null;
-                                }
-                                callStream();
-                              },
-                              label: '< 1 year',
-                            ),
-                            MyFilterChipSingle(
-                              isSelected: selection[2],
-                              onSelected: (value) {
-                                setState(() {
-                                  selection = [false, false, value, false];
-                                });
-                                if (value) {
-                                  oldFilter = 24;
-                                } else {
-                                  oldFilter = null;
-                                }
-                                callStream();
-                              },
-                              label: '< 2 years',
-                            ),
-                            MyFilterChipSingle(
-                              isSelected: selection[3],
-                              onSelected: (value) {
-                                setState(() {
-                                  selection = [false, false, false, value];
-                                });
-                                if (value) {
-                                  oldFilter = 60;
-                                } else {
-                                  oldFilter = null;
-                                }
-                                callStream();
-                              },
-                              label: '< 5 years',
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      'Brands',
-                      style: chipHeading,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 36,
-                        child: ListView(
-                      physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  phoneFilter.add('samsung');
-                                } else {
-                                  phoneFilter.remove('samsung');
-                                }
-                                callStream();
-                              },
-                              label: 'Samsung',
-                            ),
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  phoneFilter.add('vivo');
-                                } else {
-                                  phoneFilter.remove('vivo');
-                                }
-                                callStream();
-                              },
-                              label: 'Vivo',
-                            ),
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  phoneFilter.add('oppo');
-                                } else {
-                                  phoneFilter.remove('oppo');
-                                }
-                                callStream();
-                              },
-                              label: 'Oppo',
-                            ),
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  phoneFilter.add('redmi');
-                                } else {
-                                  phoneFilter.remove('redmi');
-                                }
-                                callStream();
-                              },
-                              label: 'Redmi',
-                            ),
-                            MyFilterChip(
-                              onSelected: (value) {
-                                if (value) {
-                                  phoneFilter.add('huawei');
-                                } else {
-                                  phoneFilter.remove('huawei');
-                                }
-                                callStream();
-                              },
-                              label: 'Huawei',
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ), //For Chips
-            SizedBox(height: 20),
-            Expanded(
-              child: StreamBuilder<List<PhoneInfo>>(
-                  stream: phoneStream,
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<PhoneInfo>> snapshot) {
-                    if (snapshot.hasError) {
-                      return Center(
-                        child: Text(
-                          'Some Error Occured',
-                          style: smallHead,
-                        ),
-                      );
-                    }
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                    return ListView.builder(
-                      physics: BouncingScrollPhysics(),
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, index) {
-                          final phone = snapshot.data[index];
-                          return PhoneCard(
-                            url: 'images/pixel.jpg',
-                            id: phone.id.substring(16),
-                            phoneBrand: phone.company,
-                            phoneModel: phone.model,
-                            monthsOld: phone.old,
-                            price: phone.price,
-                            onClick: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ProductPage(phone)));
-                            },
                           );
-                        });
-                  }),
+                        }
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return Center(child: CircularProgressIndicator());
+                        }
+                        return ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (context, index) {
+                              final phone = snapshot.data[index];
+                              return PhoneCard(
+                                url: 'images/pixel.jpg',
+                                id: phone.id.substring(16),
+                                phoneBrand: phone.company,
+                                phoneModel: phone.model,
+                                monthsOld: phone.old,
+                                price: phone.price,
+                                onClick: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProductPage(phone)));
+                                },
+                              );
+                            });
+                      }),
+                ),
+              ],
             ),
-            Container(
-              height: 75,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  RawMaterialButton(
-                    onPressed: () {},
-                    constraints: BoxConstraints(),
-                    elevation: 5.0,
-                    fillColor: iconCall,
-                    child: Icon(
-                      FeatherIcons.phone,
-                      size: 25,
-                      color: background,
+            Align(
+              alignment: Alignment.bottomCenter,
+                          child: Container(
+                    height: 75,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        RawMaterialButton(
+                          onPressed: () {},
+                          constraints: BoxConstraints(),
+                          elevation: 5.0,
+                          fillColor: iconCall,
+                          child: Icon(
+                            FeatherIcons.phone,
+                            size: 25,
+                            color: background,
+                          ),
+                          padding: EdgeInsets.all(15.0),
+                          shape: CircleBorder(),
+                        ),
+                        RawMaterialButton(
+                          onPressed: () {},
+                          constraints: BoxConstraints(),
+                          elevation: 5.0,
+                          fillColor: iconWhatsapp,
+                          child: SvgPicture.asset('images/whatsapp.svg',
+                              height: 25,
+                              width: 25,
+                              color: background,
+                              semanticsLabel: 'WhatsApp Logo'),
+                          padding: EdgeInsets.all(15.0),
+                          shape: CircleBorder(),
+                        ),
+                        Hero(
+                          tag: 'button',
+                          child: RawMaterialButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SellYourPhone()),
+                              );
+                            },
+                            constraints: BoxConstraints(),
+                            elevation: 5.0,
+                            fillColor: iconAdd,
+                            child: Icon(
+                              FeatherIcons.plus,
+                              size: 25,
+                              color: background,
+                            ),
+                            padding: EdgeInsets.all(15.0),
+                            shape: CircleBorder(),
+                          ),
+                        ),
+                      ],
                     ),
-                    padding: EdgeInsets.all(15.0),
-                    shape: CircleBorder(),
                   ),
-                  RawMaterialButton(
-                    onPressed: () {},
-                    constraints: BoxConstraints(),
-                    elevation: 5.0,
-                    fillColor: iconWhatsapp,
-                    child: SvgPicture.asset('images/whatsapp.svg',
-                        height: 25,
-                        width: 25,
-                        color: background,
-                        semanticsLabel: 'WhatsApp Logo'),
-                    padding: EdgeInsets.all(15.0),
-                    shape: CircleBorder(),
-                  ),
-                  Hero(
-                    tag: 'button',
-                    child: RawMaterialButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SellYourPhone()),
-                        );
-                      },
-                      constraints: BoxConstraints(),
-                      elevation: 5.0,
-                      fillColor: iconAdd,
-                      child: Icon(
-                        FeatherIcons.plus,
-                        size: 25,
-                        color: background,
-                      ),
-                      padding: EdgeInsets.all(15.0),
-                      shape: CircleBorder(),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ),
