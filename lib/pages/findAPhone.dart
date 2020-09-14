@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:secohand/components/launchWhatsApp.dart';
 import 'package:secohand/components/phoneCard.dart';
 import 'package:secohand/constant.dart';
 import 'package:secohand/components/filterChip.dart';
@@ -64,7 +65,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                           child: Container(
                             height: 36,
                             child: ListView(
-                          physics: BouncingScrollPhysics(),
+                              physics: BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
                               children: [
                                 MyFilterChip(
@@ -141,7 +142,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                           child: Container(
                             height: 36,
                             child: ListView(
-                          physics: BouncingScrollPhysics(),
+                              physics: BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
                               children: [
                                 MyFilterChipSingle(
@@ -223,7 +224,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                           child: Container(
                             height: 36,
                             child: ListView(
-                          physics: BouncingScrollPhysics(),
+                              physics: BouncingScrollPhysics(),
                               scrollDirection: Axis.horizontal,
                               children: [
                                 MyFilterChip(
@@ -303,11 +304,12 @@ class _FindAPhoneState extends State<FindAPhone> {
                             ),
                           );
                         }
-                        if (snapshot.connectionState == ConnectionState.waiting) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
                           return Center(child: CircularProgressIndicator());
                         }
                         return ListView.builder(
-                          physics: BouncingScrollPhysics(),
+                            physics: BouncingScrollPhysics(),
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, index) {
                               final phone = snapshot.data[index];
@@ -333,62 +335,70 @@ class _FindAPhoneState extends State<FindAPhone> {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-                          child: Container(
-                    height: 75,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        RawMaterialButton(
-                          onPressed: () {},
-                          constraints: BoxConstraints(),
-                          elevation: 5.0,
-                          fillColor: iconCall,
-                          child: Icon(
-                            FeatherIcons.phone,
-                            size: 25,
-                            color: background,
-                          ),
-                          padding: EdgeInsets.all(15.0),
-                          shape: CircleBorder(),
-                        ),
-                        RawMaterialButton(
-                          onPressed: () {},
-                          constraints: BoxConstraints(),
-                          elevation: 5.0,
-                          fillColor: iconWhatsapp,
-                          child: SvgPicture.asset('images/whatsapp.svg',
-                              height: 25,
-                              width: 25,
-                              color: background,
-                              semanticsLabel: 'WhatsApp Logo'),
-                          padding: EdgeInsets.all(15.0),
-                          shape: CircleBorder(),
-                        ),
-                        Hero(
-                          tag: 'button',
-                          child: RawMaterialButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SellYourPhone()),
-                              );
-                            },
-                            constraints: BoxConstraints(),
-                            elevation: 5.0,
-                            fillColor: iconAdd,
-                            child: Icon(
-                              FeatherIcons.plus,
-                              size: 25,
-                              color: background,
-                            ),
-                            padding: EdgeInsets.all(15.0),
-                            shape: CircleBorder(),
-                          ),
-                        ),
-                      ],
+              child: Container(
+                height: 75,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    RawMaterialButton(
+                      onPressed: () {
+                        launchCaller('7889428790');
+                      },
+                      constraints: BoxConstraints(),
+                      elevation: 5.0,
+                      fillColor: iconCall,
+                      child: Icon(
+                        FeatherIcons.phone,
+                        size: 25,
+                        color: background,
+                      ),
+                      padding: EdgeInsets.all(15.0),
+                      shape: CircleBorder(),
                     ),
-                  ),
+                    RawMaterialButton(
+                      onPressed: () {
+                        try {
+                          launchWhatsApp('+917889428790', 'Hello');
+                        } catch (e) {
+                          print(e);
+                        }
+                      },
+                      constraints: BoxConstraints(),
+                      elevation: 5.0,
+                      fillColor: iconWhatsapp,
+                      child: SvgPicture.asset('images/whatsapp.svg',
+                          height: 25,
+                          width: 25,
+                          color: background,
+                          semanticsLabel: 'WhatsApp Logo'),
+                      padding: EdgeInsets.all(15.0),
+                      shape: CircleBorder(),
+                    ),
+                    Hero(
+                      tag: 'button',
+                      child: RawMaterialButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SellYourPhone()),
+                          );
+                        },
+                        constraints: BoxConstraints(),
+                        elevation: 5.0,
+                        fillColor: iconAdd,
+                        child: Icon(
+                          FeatherIcons.plus,
+                          size: 25,
+                          color: background,
+                        ),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

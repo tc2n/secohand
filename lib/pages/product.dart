@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:secohand/components/launchWhatsApp.dart';
 import 'package:secohand/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:secohand/firebase_repository/firebase_repository.dart';
@@ -91,7 +92,9 @@ class ProductPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        launchCaller('7889428790');
+                      },
                       constraints: BoxConstraints(),
                       elevation: 5.0,
                       fillColor: iconCall,
@@ -104,7 +107,13 @@ class ProductPage extends StatelessWidget {
                       shape: CircleBorder(),
                     ),
                     RawMaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        try {
+                          launchWhatsApp('+917889428790', 'Hello, I want to know about ${_phone.company} ${_phone.model} model id ${_phone.id.substring(16)}');
+                        } catch (e) {
+                          print(e);
+                        }
+                      },
                       constraints: BoxConstraints(),
                       elevation: 5.0,
                       fillColor: iconWhatsapp,
