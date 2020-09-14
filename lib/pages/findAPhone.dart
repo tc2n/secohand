@@ -62,6 +62,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                       child: Container(
                         height: 36,
                         child: ListView(
+                      physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           children: [
                             MyFilterChip(
@@ -138,6 +139,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                       child: Container(
                         height: 36,
                         child: ListView(
+                      physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           children: [
                             MyFilterChipSingle(
@@ -219,6 +221,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                       child: Container(
                         height: 36,
                         child: ListView(
+                      physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           children: [
                             MyFilterChip(
@@ -302,6 +305,7 @@ class _FindAPhoneState extends State<FindAPhone> {
                       return Center(child: CircularProgressIndicator());
                     }
                     return ListView.builder(
+                      physics: BouncingScrollPhysics(),
                         itemCount: snapshot.data.length,
                         itemBuilder: (context, index) {
                           final phone = snapshot.data[index];
