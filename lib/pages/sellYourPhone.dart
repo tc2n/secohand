@@ -281,7 +281,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                   Row(
                     children: [
                       Text(
-                        'Upload Phone Photo',
+                        'Photo',
                         style: typedText.copyWith(color: Colors.black54),
                       ),
                       Padding(
