@@ -326,31 +326,24 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                   ..showSnackBar(SnackBar(
                                     backgroundColor: Colors.blue,
                                     content: Text('Uploading image...'),
+                                    duration: Duration(minutes: 30),
                                   ));
                                 _imageUrl = await _phonesRepository.uploadImage(
                                     p.basename(_image.path), _image);
                               } catch (e) {
                                 print(e);
                                 Scaffold.of(context)
-<<<<<<< HEAD
                                 ..hideCurrentSnackBar()
                                 ..showSnackBar(SnackBar(
                                   backgroundColor: Colors.red,
                                   content: Text('Error Uploading image'),
                                 ));
                               }}
-=======
-                                  ..hideCurrentSnackBar()
-                                  ..showSnackBar(SnackBar(
-                                    backgroundColor: Colors.red,
-                                    content: Text('Error Uploading image'),
-                                  ));
-                              }
->>>>>>> 2c6881628433fe352249c7721e471e56701b1488
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
                                 ..showSnackBar(SnackBar(
                                   content: Text('Sending your request...'),
+                                  duration: Duration(minutes: 30),
                                 ));
                               await _phonesRepository.addNewPhone(PhoneInfo(
                                 name: _nameController.text,
