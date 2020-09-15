@@ -429,28 +429,6 @@ class _FindAPhoneState extends State<FindAPhone> {
                       padding: EdgeInsets.all(15.0),
                       shape: CircleBorder(),
                     ),
-                    // Hero(
-                    //   tag: 'button',
-                    //   child: RawMaterialButton(
-                    //     onPressed: () {
-                    //       Navigator.push(
-                    //         context,
-                    //         MaterialPageRoute(
-                    //             builder: (context) => SellYourPhone()),
-                    //       );
-                    //     },
-                    //     constraints: BoxConstraints(),
-                    //     elevation: 5.0,
-                    //     fillColor: iconAdd,
-                    //     child: Icon(
-                    //       FeatherIcons.plus,
-                    //       size: 25,
-                    //       color: background,
-                    //     ),
-                    //     padding: EdgeInsets.all(15.0),
-                    //     shape: CircleBorder(),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
