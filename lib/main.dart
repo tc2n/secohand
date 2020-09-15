@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Seconhand',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         return Scaffold(
           backgroundColor: background,
           body: Center(child: Column(children: [
-            Image.asset('images/logoapp.png'),
+            Image.asset('images/adaptive_icon.png'),
             CircularProgressIndicator(),
           ],),),
         );
