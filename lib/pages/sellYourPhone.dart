@@ -326,7 +326,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             try {
-                              try {
+                              if(_image!=null){try {
                                 Scaffold.of(context)
                                 ..hideCurrentSnackBar()
                                 ..showSnackBar(SnackBar(
@@ -343,7 +343,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                   backgroundColor: Colors.red,
                                   content: Text('Error Uploading image'),
                                 ));
-                              }
+                              }}
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
                                 ..showSnackBar(SnackBar(
