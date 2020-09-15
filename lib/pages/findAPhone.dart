@@ -17,7 +17,7 @@ class FindAPhone extends StatefulWidget {
 class _FindAPhoneState extends State<FindAPhone> {
   final PhonesRepository _phonesRepository = FirebasePhoneRepository();
 
-  List<String> phoneFilter = [];
+  List<String> brandFilter = [];
   List<int> priceFilter = [];
   List<bool> selection = [false, false, false, false];
   int oldFilter;
@@ -25,11 +25,11 @@ class _FindAPhoneState extends State<FindAPhone> {
   @override
   Widget build(BuildContext context) {
     Stream<List<PhoneInfo>> phoneStream =
-        _phonesRepository.approvedPhones(phoneFilter, priceFilter, oldFilter);
+        _phonesRepository.approvedPhones(brandFilter, priceFilter, oldFilter);
     callStream() {
       setState(() {
         phoneStream = _phonesRepository.approvedPhones(
-            phoneFilter, priceFilter, oldFilter);
+            brandFilter, priceFilter, oldFilter);
       });
     }
 
@@ -256,9 +256,9 @@ class _FindAPhoneState extends State<FindAPhone> {
                                     MyFilterChip(
                                       onSelected: (value) {
                                         if (value) {
-                                          phoneFilter.add('samsung');
+                                          brandFilter.add('samsung');
                                         } else {
-                                          phoneFilter.remove('samsung');
+                                          brandFilter.remove('samsung');
                                         }
                                         callStream();
                                       },
@@ -267,9 +267,9 @@ class _FindAPhoneState extends State<FindAPhone> {
                                     MyFilterChip(
                                       onSelected: (value) {
                                         if (value) {
-                                          phoneFilter.add('vivo');
+                                          brandFilter.add('vivo');
                                         } else {
-                                          phoneFilter.remove('vivo');
+                                          brandFilter.remove('vivo');
                                         }
                                         callStream();
                                       },
@@ -278,9 +278,9 @@ class _FindAPhoneState extends State<FindAPhone> {
                                     MyFilterChip(
                                       onSelected: (value) {
                                         if (value) {
-                                          phoneFilter.add('oppo');
+                                          brandFilter.add('oppo');
                                         } else {
-                                          phoneFilter.remove('oppo');
+                                          brandFilter.remove('oppo');
                                         }
                                         callStream();
                                       },
@@ -289,9 +289,9 @@ class _FindAPhoneState extends State<FindAPhone> {
                                     MyFilterChip(
                                       onSelected: (value) {
                                         if (value) {
-                                          phoneFilter.add('redmi');
+                                          brandFilter.add('redmi');
                                         } else {
-                                          phoneFilter.remove('redmi');
+                                          brandFilter.remove('redmi');
                                         }
                                         callStream();
                                       },
@@ -300,9 +300,9 @@ class _FindAPhoneState extends State<FindAPhone> {
                                     MyFilterChip(
                                       onSelected: (value) {
                                         if (value) {
-                                          phoneFilter.add('huawei');
+                                          brandFilter.add('huawei');
                                         } else {
-                                          phoneFilter.remove('huawei');
+                                          brandFilter.remove('huawei');
                                         }
                                         callStream();
                                       },
@@ -319,32 +319,32 @@ class _FindAPhoneState extends State<FindAPhone> {
                   ],
                 ),
                 Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Hero(
-                      tag: 'button',
-                      child: RawMaterialButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SellYourPhone()),
-                          );
-                        },
-                        constraints: BoxConstraints(),
-                        elevation: 5.0,
-                        fillColor: iconAdd,
-                        child: Text(
-                          'SELL YOUR PHONE',
-                          style: buttonText,
-                        ),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Hero(
+                    tag: 'button',
+                    child: RawMaterialButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SellYourPhone()),
+                        );
+                      },
+                      constraints: BoxConstraints(),
+                      elevation: 5.0,
+                      fillColor: iconAdd,
+                      child: Text(
+                        'SELL YOUR PHONE',
+                        style: buttonText,
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
+                ),
                 SizedBox(height: 20),
                 Expanded(
                   child: StreamBuilder<List<PhoneInfo>>(
@@ -429,28 +429,6 @@ class _FindAPhoneState extends State<FindAPhone> {
                       padding: EdgeInsets.all(15.0),
                       shape: CircleBorder(),
                     ),
-                    // Hero(
-                    //   tag: 'button',
-                    //   child: RawMaterialButton(
-                    //     onPressed: () {
-                    //       Navigator.push(
-                    //         context,
-                    //         MaterialPageRoute(
-                    //             builder: (context) => SellYourPhone()),
-                    //       );
-                    //     },
-                    //     constraints: BoxConstraints(),
-                    //     elevation: 5.0,
-                    //     fillColor: iconAdd,
-                    //     child: Icon(
-                    //       FeatherIcons.plus,
-                    //       size: 25,
-                    //       color: background,
-                    //     ),
-                    //     padding: EdgeInsets.all(15.0),
-                    //     shape: CircleBorder(),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

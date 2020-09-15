@@ -129,7 +129,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                     text: 'Name',
                     controller: _nameController,
                     validator: (_) {
-                      return _.trim().isEmpty ? 'Please enter your name' : null;
+                      return _.trim().isEmpty ? 'Name Required' : null;
                     },
                   ),
                   TextBox(
@@ -137,25 +137,21 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                     controller: _numberController,
                     keyboardType: TextInputType.number,
                     validator: (_) {
-                      return _.trim().isEmpty
-                          ? 'Please enter phone number'
-                          : null;
+                      return _.trim().isEmpty ? 'Number Required' : null;
                     },
                   ),
                   TextBox(
                     text: 'Village',
                     controller: _villageController,
                     validator: (_) {
-                      return _.trim().isEmpty
-                          ? 'Please enter where you live'
-                          : null;
+                      return null;
                     },
                   ),
                   TextBox(
                     text: 'Mobile Brand',
                     controller: _brandController,
                     validator: (_) {
-                      return _.trim().isEmpty ? 'Please enter some text' : null;
+                      return _.trim().isEmpty ? 'Set your phone Brand' : null;
                     },
                   ),
                   TextBox(
@@ -170,9 +166,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                     controller: _ageController,
                     keyboardType: TextInputType.number,
                     validator: (_) {
-                      return _.trim().isEmpty
-                          ? 'Please enter phone number'
-                          : null;
+                      return null;
                     },
                   ),
                   TextBox(
@@ -287,7 +281,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                   Row(
                     children: [
                       Text(
-                        'Upload Phone Photo',
+                        'Photo',
                         style: typedText.copyWith(color: Colors.black54),
                       ),
                       Padding(
@@ -328,41 +322,50 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                             try {
                               if(_image!=null){try {
                                 Scaffold.of(context)
-                                ..hideCurrentSnackBar()
-                                ..showSnackBar(SnackBar(
-                                  backgroundColor: Colors.blue,
-                                  content: Text('Uploading image...'),
-                                ));
-                                _imageUrl = await _phonesRepository.uploadImage(p.basename(_image.path), _image);
-                                
+                                  ..hideCurrentSnackBar()
+                                  ..showSnackBar(SnackBar(
+                                    backgroundColor: Colors.blue,
+                                    content: Text('Uploading image...'),
+                                  ));
+                                _imageUrl = await _phonesRepository.uploadImage(
+                                    p.basename(_image.path), _image);
                               } catch (e) {
                                 print(e);
                                 Scaffold.of(context)
+<<<<<<< HEAD
                                 ..hideCurrentSnackBar()
                                 ..showSnackBar(SnackBar(
                                   backgroundColor: Colors.red,
                                   content: Text('Error Uploading image'),
                                 ));
                               }}
+=======
+                                  ..hideCurrentSnackBar()
+                                  ..showSnackBar(SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text('Error Uploading image'),
+                                  ));
+                              }
+>>>>>>> 2c6881628433fe352249c7721e471e56701b1488
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
                                 ..showSnackBar(SnackBar(
                                   content: Text('Sending your request...'),
                                 ));
                               await _phonesRepository.addNewPhone(PhoneInfo(
-                                  name: _nameController.text,
-                                  number: _numberController.text,
-                                  village: _villageController.text,
-                                  company: _brandController.text.toLowerCase(),
-                                  model: _modelController.text,
-                                  old: int.parse(_ageController.text),
-                                  ram: int.parse(_ramController.text),
-                                  memory: int.parse(_memoryController.text),
-                                  battery: int.parse(_batteryController.text),
-                                  charger: _isChargerAvailable,
-                                  screen: _screenConditon,
-                                  image: _imageUrl,
-                                  ));
+                                name: _nameController.text,
+                                number: _numberController.text,
+                                village: _villageController.text,
+                                company: _brandController.text.toLowerCase(),
+                                model: _modelController.text,
+                                old: int.parse(_ageController.text),
+                                ram: int.parse(_ramController.text),
+                                memory: int.parse(_memoryController.text),
+                                battery: int.parse(_batteryController.text),
+                                charger: _isChargerAvailable,
+                                screen: _screenConditon,
+                                image: _imageUrl,
+                              ));
                             } catch (e) {
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
