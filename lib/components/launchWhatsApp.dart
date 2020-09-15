@@ -5,19 +5,19 @@ void launchWhatsApp(String phone, String message) async {
       return "whatsapp://send?phone=$phone&text=${Uri.parse(message)}";
   }
 
-  if (await canLaunch(url())) {
+  try {
     await launch(url());
-  } else {
-    throw 'Could not launch ${url()}';
+  } catch(e) {
+     print('Could not launch ${url()} due to $e');
   }
 }
 
 
 void launchCaller(String phone) async {
     String url(){return  "tel:$phone";}   
-    if (await canLaunch(url())) {
+    try{
        await launch(url());
-    } else {
-      throw 'Could not launch $url';
+    } catch(e) {
+      print('Could not launch $url');
     }   
 }

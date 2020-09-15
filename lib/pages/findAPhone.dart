@@ -308,6 +308,39 @@ class _FindAPhoneState extends State<FindAPhone> {
                                       },
                                       label: 'Huawei',
                                     ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('mi');
+                                        } else {
+                                          brandFilter.remove('mi');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'Mi',
+                                    ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('xiaomi');
+                                        } else {
+                                          brandFilter.remove('xiaomi');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'Xiaomi',
+                                    ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('micromax');
+                                        } else {
+                                          brandFilter.remove('micromax');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'Micromax',
+                                    ),
                                   ],
                                 ),
                               ),

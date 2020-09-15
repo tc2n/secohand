@@ -30,6 +30,8 @@ class _SellYourPhoneState extends State<SellYourPhone> {
   final picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
 
+  RegExp phoneMatch = RegExp(r'^\d{10}$');
+
   final PhonesRepository _phonesRepository = FirebasePhoneRepository();
 
   clearAll() {
@@ -137,7 +139,9 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                     controller: _numberController,
                     keyboardType: TextInputType.number,
                     validator: (_) {
-                      return _.trim().isEmpty ? 'Number Required' : null;
+                      return phoneMatch.hasMatch(_) ==false
+                          ? 'Please enter Valid phone number'
+                          : null;
                     },
                   ),
                   TextBox(
@@ -359,6 +363,14 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                 screen: _screenConditon,
                                 image: _imageUrl,
                               ));
+                              clearAll();
+                            Scaffold.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(SnackBar(
+                                content: Text('Success'),
+                                backgroundColor: Colors.green,
+                              ));
+                              Navigator.popUntil(context, (route) => route.isFirst);
                             } catch (e) {
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
@@ -367,13 +379,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                   backgroundColor: Colors.red,
                                 ));
                             }
-                            clearAll();
-                            Scaffold.of(context)
-                              ..hideCurrentSnackBar()
-                              ..showSnackBar(SnackBar(
-                                content: Text('Success'),
-                                backgroundColor: Colors.green,
-                              ));
+                            
                           }
                         },
                         constraints: BoxConstraints(),

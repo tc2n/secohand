@@ -32,103 +32,105 @@ class ProductPage extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: 200,
-                width: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Colors.black26,
-                  image: DecorationImage(
-                      image: _phone.image==null ? AssetImage('images/placeholder.png') : NetworkImage(_phone.image),
-                      fit: BoxFit.cover),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 200,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.black26,
+                    image: DecorationImage(
+                        image: _phone.image==null ? AssetImage('images/placeholder.png') : NetworkImage(_phone.image),
+                        fit: BoxFit.cover),
+                  ),
                 ),
-              ),
-              Text(
-                '₹ ${_phone.price}',
-                style: productPrice,
-              ),
+                Text(
+                  '₹ ${_phone.price}',
+                  style: productPrice,
+                ),
 
-              Column(
-                children: [
-                  Text(
-                    'Details',
-                    style: smallHead,
-                  ),
-                  SizedBox(height: 10,),
-                  Table(
-                    border: TableBorder(
-                        top: BorderSide(color: primaryTransparent, width: 1),
-                        bottom: BorderSide(color: primaryTransparent, width: 1),
-                        right: BorderSide(color: primaryTransparent, width: 1),
-                        left: BorderSide(color: primaryTransparent, width: 1),
-                        verticalInside:
-                            BorderSide(color: primaryTransparent, width: 1)),
-                    children: [
-                      createTableRow('Old', '${_phone.old} months old'),
-                      createTableRow('RAM', '${_phone.ram} GB'),
-                      createTableRow('Storage', '${_phone.memory} GB'),
-                      createTableRow('Battery', '${_phone.battery} mAh'),
-                      createTableRow(
-                          'Charger Included?', _phone.charger ? 'Yes' : 'No'),
-                      createTableRow('Screen condition', _phone.screen),
-                    ],
-                  ),
-                ],
-              ),
-              // Text(
-              //   'Contact Seller',
-              //   style: smallHead,
-              // ),
-              Container(
-                height: 90,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                Column(
                   children: [
-                    RawMaterialButton(
-                      onPressed: () {
-                        launchCaller('7889428790');
-                      },
-                      constraints: BoxConstraints(),
-                      elevation: 5.0,
-                      fillColor: iconCall,
-                      child: Icon(
-                        FeatherIcons.phone,
-                        size: 25,
-                        color: background,
-                      ),
-                      padding: EdgeInsets.all(15.0),
-                      shape: CircleBorder(),
+                    Text(
+                      'Details',
+                      style: smallHead,
                     ),
-                    RawMaterialButton(
-                      onPressed: () {
-                        try {
-                          launchWhatsApp('+917889428790', 'Hello, I want to know about ${_phone.company} ${_phone.model} model id ${_phone.id.substring(16)}');
-                        } catch (e) {
-                          print(e);
-                        }
-                      },
-                      constraints: BoxConstraints(),
-                      elevation: 5.0,
-                      fillColor: iconWhatsapp,
-                      child: SvgPicture.asset('images/whatsapp.svg',
-                          height: 25,
-                          width: 25,
-                          color: background,
-                          semanticsLabel: 'Whatsapp Logo'),
-                      padding: EdgeInsets.all(15.0),
-                      shape: CircleBorder(),
+                    SizedBox(height: 10,),
+                    Table(
+                      border: TableBorder(
+                          top: BorderSide(color: primaryTransparent, width: 1),
+                          bottom: BorderSide(color: primaryTransparent, width: 1),
+                          right: BorderSide(color: primaryTransparent, width: 1),
+                          left: BorderSide(color: primaryTransparent, width: 1),
+                          verticalInside:
+                              BorderSide(color: primaryTransparent, width: 1)),
+                      children: [
+                        createTableRow('Old', '${_phone.old} months old'),
+                        createTableRow('RAM', '${_phone.ram} GB'),
+                        createTableRow('Storage', '${_phone.memory} GB'),
+                        createTableRow('Battery', '${_phone.battery} mAh'),
+                        createTableRow(
+                            'Charger Included?', _phone.charger ? 'Yes' : 'No'),
+                        createTableRow('Screen condition', _phone.screen),
+                      ],
                     ),
                   ],
                 ),
-              ),
-            ],
+                // Text(
+                //   'Contact Seller',
+                //   style: smallHead,
+                // ),
+                Container(
+                  height: 90,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      RawMaterialButton(
+                        onPressed: () {
+                          launchCaller('7889428790');
+                        },
+                        constraints: BoxConstraints(),
+                        elevation: 5.0,
+                        fillColor: iconCall,
+                        child: Icon(
+                          FeatherIcons.phone,
+                          size: 25,
+                          color: background,
+                        ),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                      RawMaterialButton(
+                        onPressed: () {
+                          try {
+                            launchWhatsApp('+917889428790', 'Hello, I want to know about ${_phone.company} ${_phone.model} model id ${_phone.id.substring(16)}');
+                          } catch (e) {
+                            print(e);
+                          }
+                        },
+                        constraints: BoxConstraints(),
+                        elevation: 5.0,
+                        fillColor: iconWhatsapp,
+                        child: SvgPicture.asset('images/whatsapp.svg',
+                            height: 25,
+                            width: 25,
+                            color: background,
+                            semanticsLabel: 'Whatsapp Logo'),
+                        padding: EdgeInsets.all(15.0),
+                        shape: CircleBorder(),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
