@@ -127,7 +127,7 @@ class ProductPage extends StatelessWidget {
                 children: [
                   RawMaterialButton(
                     onPressed: () {
-                      launchCaller('7889428790');
+                      launchCaller('8770890130');
                     },
                     constraints: BoxConstraints(),
                     elevation: 5.0,
@@ -143,8 +143,8 @@ class ProductPage extends StatelessWidget {
                   RawMaterialButton(
                     onPressed: () {
                       try {
-                        launchWhatsApp('+917889428790',
-                            'Hello, I want to know about ${_phone.company} ${_phone.model} model id ${_phone.id.substring(16)}');
+                        launchWhatsApp('+918770890130',
+                            'Hello Kunal, I want to know about ${_phone.company} ${_phone.model}, model id ${_phone.id.substring(16)}');
                       } catch (e) {
                         print(e);
                       }

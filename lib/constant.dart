@@ -26,3 +26,6 @@ TextStyle tableHead = GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w6
 TextStyle tableContent = GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black54 );
 TextStyle typedText = GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.w400);
 TextStyle buttonText = GoogleFonts.roboto(fontSize: 18, fontWeight: FontWeight.w400, color: background, letterSpacing: 2.0 );
+
+
+List<String> mobileBrands = ['Samsung', 'Apple', 'Nokia', 'Redmi', 'Xiaomi', 'mi', 'Micromax', 'Vivo', 'Oppo', 'Realme', 'Huawei', 'One Plus', 'google pixel', 'Jio phone', 'Other'];

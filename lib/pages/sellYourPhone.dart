@@ -7,6 +7,7 @@ import 'package:secohand/components/textbox.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:secohand/firebase_repository/firebase_repository.dart';
 import 'package:path/path.dart' as p;
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class SellYourPhone extends StatefulWidget {
   @override
@@ -151,13 +152,56 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                       return null;
                     },
                   ),
-                  TextBox(
-                    text: 'Mobile Brand',
-                    controller: _brandController,
-                    validator: (_) {
+                  TypeAheadFormField(
+                    
+                      textFieldConfiguration: TextFieldConfiguration(
+                        textAlign: TextAlign.center,
+                        controller: _brandController,
+                        style: typedText,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 20),
+                          hintText: 'Mobile Brand',
+                          hintStyle: typedText.copyWith(color: Colors.black54),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(
+                              style: BorderStyle.solid,
+                              width: 1,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.black87),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.black54),
+                          ),
+                        ),
+                      ),
+                      onSuggestionSelected: (suggestions) {
+                        _brandController.text = suggestions;
+                      },
+                      itemBuilder: (context, suggestion) {
+                        return ListTile(
+                          title: Text(suggestion),
+                        );
+                      },
+                      validator: (_) {
                       return _.trim().isEmpty ? 'Set your phone Brand' : null;
                     },
-                  ),
+                    onSaved: (value) => _brandController.text = value,
+                      suggestionsCallback: (pattern) {
+                        return mobileBrands
+                            .where((brand) =>
+                                (RegExp(pattern, caseSensitive: false)
+                                        .hasMatch(brand) ==
+                                    true))
+                            .toList();
+                      }),
                   TextBox(
                     text: 'Mobile Model',
                     controller: _modelController,
