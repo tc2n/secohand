@@ -139,7 +139,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                     controller: _numberController,
                     keyboardType: TextInputType.number,
                     validator: (_) {
-                      return phoneMatch.hasMatch(_) ==false
+                      return phoneMatch.hasMatch(_) == false
                           ? 'Please enter Valid phone number'
                           : null;
                     },
@@ -182,7 +182,7 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                     },
                   ),
                   TextBox(
-                    text: 'Memory in GB',
+                    text: 'Storage in GB',
                     controller: _memoryController,
                     keyboardType: TextInputType.number,
                     validator: (_) {
@@ -324,25 +324,28 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             try {
-                              if(_image!=null){try {
-                                Scaffold.of(context)
-                                  ..hideCurrentSnackBar()
-                                  ..showSnackBar(SnackBar(
-                                    backgroundColor: Colors.blue,
-                                    content: Text('Uploading image...'),
-                                    duration: Duration(minutes: 30),
-                                  ));
-                                _imageUrl = await _phonesRepository.uploadImage(
-                                    p.basename(_image.path), _image);
-                              } catch (e) {
-                                print(e);
-                                Scaffold.of(context)
-                                ..hideCurrentSnackBar()
-                                ..showSnackBar(SnackBar(
-                                  backgroundColor: Colors.red,
-                                  content: Text('Error Uploading image'),
-                                ));
-                              }}
+                              if (_image != null) {
+                                try {
+                                  Scaffold.of(context)
+                                    ..hideCurrentSnackBar()
+                                    ..showSnackBar(SnackBar(
+                                      backgroundColor: Colors.blue,
+                                      content: Text('Uploading image...'),
+                                      duration: Duration(minutes: 30),
+                                    ));
+                                  _imageUrl =
+                                      await _phonesRepository.uploadImage(
+                                          p.basename(_image.path), _image);
+                                } catch (e) {
+                                  print(e);
+                                  Scaffold.of(context)
+                                    ..hideCurrentSnackBar()
+                                    ..showSnackBar(SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text('Error Uploading image'),
+                                    ));
+                                }
+                              }
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
                                 ..showSnackBar(SnackBar(
@@ -364,13 +367,14 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                 image: _imageUrl,
                               ));
                               clearAll();
-                            Scaffold.of(context)
-                              ..hideCurrentSnackBar()
-                              ..showSnackBar(SnackBar(
-                                content: Text('Success'),
-                                backgroundColor: Colors.green,
-                              ));
-                              Navigator.popUntil(context, (route) => route.isFirst);
+                              Scaffold.of(context)
+                                ..hideCurrentSnackBar()
+                                ..showSnackBar(SnackBar(
+                                  content: Text('Success'),
+                                  backgroundColor: Colors.green,
+                                ));
+                              Navigator.popUntil(
+                                  context, (route) => route.isFirst);
                             } catch (e) {
                               Scaffold.of(context)
                                 ..hideCurrentSnackBar()
@@ -379,7 +383,6 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                   backgroundColor: Colors.red,
                                 ));
                             }
-                            
                           }
                         },
                         constraints: BoxConstraints(),
