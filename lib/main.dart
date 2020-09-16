@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
         }
         return Scaffold(
           backgroundColor: background,
-          body: Center(child: Column(children: [
+          body: Center(child: Column(
+            children: [
             Image.asset('images/adaptive_icon.png'),
             CircularProgressIndicator(),
           ],),),
