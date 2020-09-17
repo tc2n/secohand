@@ -102,12 +102,15 @@ class ProductPage extends StatelessWidget {
                               verticalInside: BorderSide(
                                   color: primaryTransparent, width: 1)),
                           children: [
-                            createTableRow('Old', '${_phone.old} months old'),
-                            createTableRow('RAM', '${_phone.ram} GB'),
-                            createTableRow('Storage', '${_phone.memory} GB'),
-                            createTableRow('Battery', '${_phone.battery} mAh'),
-                            createTableRow('Charger Included?',
-                                _phone.charger ? 'Yes' : 'No'),
+                            createTableRow(
+                                    'Old', '${_phone.old} months old'),
+                                createTableRow('RAM', _phone.ram!=null ?'${_phone.ram} GB': "Not mentioned"),
+                                createTableRow(
+                                    'Storage', _phone.memory!=null ?'${_phone.memory} GB': "Not mentioned"),
+                                createTableRow(
+                                    'Battery', _phone.memory!=null ?'${_phone.battery} mAh': "Not mentioned"),
+                                createTableRow('Charger Included?',
+                                    _phone.charger==null ? 'Not mentioned':_phone.charger ? 'Yes' : 'No'),
                             createTableRow('Screen condition', _phone.screen),
                           ],
                         ),

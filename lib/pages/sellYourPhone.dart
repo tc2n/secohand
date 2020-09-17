@@ -402,10 +402,18 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                 village: _villageController.text,
                                 company: _brandController.text.toLowerCase(),
                                 model: _modelController.text,
-                                old: int.parse(_ageController.text),
-                                ram: int.parse(_ramController.text),
-                                memory: int.parse(_memoryController.text),
-                                battery: int.parse(_batteryController.text),
+                                old: _ageController.text != ''
+                                          ? int.parse(_ageController.text)
+                                          : null,
+                                      ram: _ramController.text != ''
+                                          ? int.parse(_ramController.text)
+                                          : null,
+                                      memory: _memoryController.text != ''
+                                          ? int.parse(_memoryController.text)
+                                          : null,
+                                      battery: _batteryController.text != ''
+                                          ? int.parse(_batteryController.text)
+                                          : null,
                                 charger: _isChargerAvailable,
                                 screen: _screenConditon,
                                 image: _imageUrl,

@@ -22,6 +22,8 @@ class _FindAPhoneState extends State<FindAPhone> {
   List<bool> selection = [false, false, false, false];
   int oldFilter;
 
+
+
   @override
   Widget build(BuildContext context) {
     Stream<List<PhoneInfo>> phoneStream =
@@ -32,6 +34,7 @@ class _FindAPhoneState extends State<FindAPhone> {
             brandFilter, priceFilter, oldFilter);
       });
     }
+
 
     return Scaffold(
       backgroundColor: background,
@@ -340,6 +343,72 @@ class _FindAPhoneState extends State<FindAPhone> {
                                         callStream();
                                       },
                                       label: 'Micromax',
+                                    ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('realme');
+                                        } else {
+                                          brandFilter.remove('realme');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'Realme',
+                                    ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('apple');
+                                        } else {
+                                          brandFilter.remove('apple');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'Apple 🍎',
+                                    ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('google pixel');
+                                        } else {
+                                          brandFilter.remove('google pixel');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'Google Pixel',
+                                    ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('one plus');
+                                        } else {
+                                          brandFilter.remove('one plus');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'One Plus',
+                                    ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('jio phone');
+                                        } else {
+                                          brandFilter.remove('jio phone');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'Jio phone',
+                                    ),
+                                    MyFilterChip(
+                                      onSelected: (value) {
+                                        if (value) {
+                                          brandFilter.add('other');
+                                        } else {
+                                          brandFilter.remove('other');
+                                        }
+                                        callStream();
+                                      },
+                                      label: 'Other',
                                     ),
                                   ],
                                 ),
