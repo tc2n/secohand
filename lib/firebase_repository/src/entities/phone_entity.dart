@@ -13,6 +13,7 @@ class PhoneEntity {
   final int ram;
   final int memory;
   final int battery;
+  final int warranty;
   final bool charger;
   final String screen;
   final String image;
@@ -30,12 +31,12 @@ class PhoneEntity {
       this.ram,
       this.memory,
       this.battery,
+      this.warranty,
       this.charger,
       this.screen,
       this.image,
       this.approved,
-      this.price
-      );
+      this.price);
 
   Map<String, Object> toJson() {
     return {
@@ -45,15 +46,16 @@ class PhoneEntity {
       "village": village,
       "company": company,
       "model": model,
-      "old":old,
+      "old": old,
       "ram": ram,
       "memory": memory,
       "battery": battery,
+      "warranty": warranty,
       "charger": charger,
-      "screen" : screen,
+      "screen": screen,
       "image": image,
-      "approved" : approved,
-      "price" : price
+      "approved": approved,
+      "price": price
     };
   }
 
@@ -74,6 +76,7 @@ class PhoneEntity {
       json["ram"] as int,
       json["memory"] as int,
       json["battery"] as int,
+      json["warranty"] as int,
       json["charger"] as bool,
       json["screen"] as String,
       json["image"] as String,
@@ -84,40 +87,41 @@ class PhoneEntity {
 
   static PhoneEntity fromSnapshot(DocumentSnapshot snap) {
     return PhoneEntity(
-      snap.id,
-      snap.data()['name'],
-      snap.data()['number'],
-      snap.data()['village'],
-      snap.data()['company'],
-      snap.data()['model'],
-      snap.data()['old'],
-      snap.data()['ram'],
-      snap.data()['memory'],
-      snap.data()['battery'],
-      snap.data()['charger'],
-      snap.data()['screen'],
-      snap.data()['image'],
-      snap.data()['approved'],
-      snap.data()['price']
-    );
+        snap.id,
+        snap.data()['name'],
+        snap.data()['number'],
+        snap.data()['village'],
+        snap.data()['company'],
+        snap.data()['model'],
+        snap.data()['old'],
+        snap.data()['ram'],
+        snap.data()['memory'],
+        snap.data()['battery'],
+        snap.data()['warranty'],
+        snap.data()['charger'],
+        snap.data()['screen'],
+        snap.data()['image'],
+        snap.data()['approved'],
+        snap.data()['price']);
   }
 
-   Map<String, Object> toDocument() {
+  Map<String, Object> toDocument() {
     return {
       "name": name,
       "number": number,
       "village": village,
       "company": company,
       "model": model,
-      "old":old,
+      "old": old,
       "ram": ram,
       "memory": memory,
       "battery": battery,
+      "warranty": warranty,
       "charger": charger,
-      "screen" : screen,
-      "image" : image,
-      "approved" : approved,
-      "price" : price
+      "screen": screen,
+      "image": image,
+      "approved": approved,
+      "price": price
     };
   }
 }

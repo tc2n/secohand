@@ -124,6 +124,11 @@ class ProductPage extends StatelessWidget {
                                     ? 'Not mentioned'
                                     : _phone.charger ? 'Yes' : 'No'),
                             createTableRow('Screen condition', _phone.screen),
+                            createTableRow(
+                                'Warranty',
+                                _phone.warranty != null
+                                    ? '${_phone.warranty} days'
+                                    : "Not mentioned"),
                           ],
                         ),
                       ],
