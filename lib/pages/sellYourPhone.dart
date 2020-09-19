@@ -153,7 +153,6 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                     },
                   ),
                   TypeAheadFormField(
-                    
                       textFieldConfiguration: TextFieldConfiguration(
                         textAlign: TextAlign.center,
                         controller: _brandController,
@@ -191,9 +190,9 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                         );
                       },
                       validator: (_) {
-                      return _.trim().isEmpty ? 'Set your phone Brand' : null;
-                    },
-                    onSaved: (value) => _brandController.text = value,
+                        return _.trim().isEmpty ? 'Set your phone Brand' : null;
+                      },
+                      onSaved: (value) => _brandController.text = value,
                       suggestionsCallback: (pattern) {
                         return mobileBrands
                             .where((brand) =>
@@ -403,17 +402,17 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                 company: _brandController.text.toLowerCase(),
                                 model: _modelController.text,
                                 old: _ageController.text != ''
-                                          ? int.parse(_ageController.text)
-                                          : null,
-                                      ram: _ramController.text != ''
-                                          ? int.parse(_ramController.text)
-                                          : null,
-                                      memory: _memoryController.text != ''
-                                          ? int.parse(_memoryController.text)
-                                          : null,
-                                      battery: _batteryController.text != ''
-                                          ? int.parse(_batteryController.text)
-                                          : null,
+                                    ? int.parse(_ageController.text)
+                                    : null,
+                                ram: _ramController.text != ''
+                                    ? int.parse(_ramController.text)
+                                    : null,
+                                memory: _memoryController.text != ''
+                                    ? int.parse(_memoryController.text)
+                                    : null,
+                                battery: _batteryController.text != ''
+                                    ? int.parse(_batteryController.text)
+                                    : null,
                                 charger: _isChargerAvailable,
                                 screen: _screenConditon,
                                 image: _imageUrl,

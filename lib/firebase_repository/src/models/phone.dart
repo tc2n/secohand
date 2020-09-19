@@ -13,6 +13,7 @@ class PhoneInfo {
   final int ram;
   final int memory;
   final int battery;
+  final int warranty;
   final bool charger;
   final String screen;
   final String image;
@@ -30,31 +31,35 @@ class PhoneInfo {
       this.ram,
       this.memory,
       this.battery,
+      this.warranty,
       this.charger,
       this.screen,
       this.image,
-      this.approved=false,
-      this.price}) : this.id = id;
+      this.approved = false,
+      this.price})
+      : this.id = id;
 
-  PhoneInfo copyWith(
-      {String id,
-  String name,
-  String number,
-  String village,
-  String company,
-  String model,
-  int old,
-  int ram,
-  int memory,
-  int battery,
-  bool charger,
-  String screen,
-  String image,
-  bool approved,
-  int price,}) {
+  PhoneInfo copyWith({
+    String id,
+    String name,
+    String number,
+    String village,
+    String company,
+    String model,
+    int old,
+    int ram,
+    int memory,
+    int battery,
+    int warranty,
+    bool charger,
+    String screen,
+    String image,
+    bool approved,
+    int price,
+  }) {
     return PhoneInfo(
         id: id ?? this.id,
-        name:  name ?? this.name,
+        name: name ?? this.name,
         number: number ?? this.number,
         village: village ?? this.village,
         company: company ?? this.company,
@@ -63,11 +68,11 @@ class PhoneInfo {
         ram: ram ?? this.ram,
         memory: memory ?? this.memory,
         battery: battery ?? this.battery,
+        warranty: warranty ?? this.warranty,
         charger: charger ?? this.charger,
         screen: screen ?? this.screen,
         approved: approved ?? this.approved,
-        price: price ?? this.price
-         );
+        price: price ?? this.price);
   }
 
   @override
@@ -76,26 +81,28 @@ class PhoneInfo {
   }
 
   PhoneEntity toEntity() {
-    return PhoneEntity(id, name, number, village, company, model, old, ram , memory , battery, charger, screen,image, approved, price);
+    return PhoneEntity(id, name, number, village, company, model, old, ram,
+        memory, battery, warranty, charger, screen, image, approved, price);
   }
 
   static PhoneInfo fromEntity(PhoneEntity entity) {
     return PhoneInfo(
-        id: entity.id,
-        name : entity.name,
-        number: entity.number,
-        village: entity.village,
-        company: entity.company,
-        model: entity.model,
-        old: entity.old,
-        ram: entity.ram,
-        memory: entity.memory,
-        battery: entity.battery,
-        charger: entity.charger,
-        screen: entity.screen,
-        image: entity.image,
-        approved: entity.approved,
-        price: entity.price,
-        );
+      id: entity.id,
+      name: entity.name,
+      number: entity.number,
+      village: entity.village,
+      company: entity.company,
+      model: entity.model,
+      old: entity.old,
+      ram: entity.ram,
+      memory: entity.memory,
+      battery: entity.battery,
+      warranty: entity.warranty,
+      charger: entity.charger,
+      screen: entity.screen,
+      image: entity.image,
+      approved: entity.approved,
+      price: entity.price,
+    );
   }
 }
