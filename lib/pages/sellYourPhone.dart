@@ -24,7 +24,6 @@ class _SellYourPhoneState extends State<SellYourPhone> {
   final TextEditingController _ramController = TextEditingController();
   final TextEditingController _memoryController = TextEditingController();
   final TextEditingController _batteryController = TextEditingController();
-  final TextEditingController _warrantyController = TextEditingController();
   bool _isChargerAvailable;
   String _screenConditon = 'not mentioned';
   String _imageUrl;
@@ -241,14 +240,6 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                       return null;
                     },
                   ),
-                  TextBox(
-                    text: 'Warranty Period',
-                    controller: _warrantyController,
-                    keyboardType: TextInputType.number,
-                    validator: (_) {
-                      return null;
-                    },
-                  ),
                   Row(
                     children: [
                       Text(
@@ -421,9 +412,6 @@ class _SellYourPhoneState extends State<SellYourPhone> {
                                     : null,
                                 battery: _batteryController.text != ''
                                     ? int.parse(_batteryController.text)
-                                    : null,
-                                warranty: _warrantyController.text != ''
-                                    ? int.parse(_warrantyController.text)
                                     : null,
                                 charger: _isChargerAvailable,
                                 screen: _screenConditon,
