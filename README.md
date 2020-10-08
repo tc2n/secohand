@@ -10,4 +10,4 @@ A platform where you can buy or sell your used mobile phones.
 
 
 Feel free to contribute to this Repository with your positive changes.
-For Admin app(private repo) contact @tc2n or @22shubh22.
+For Admin app(private repo) contact [Tushar](https://t.me/tusharc2n) or [Shubham G.](https://github.com/22shubh22).
